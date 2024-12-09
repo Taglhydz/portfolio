@@ -1,0 +1,22 @@
+@import url(./base.css);
+
+body {
+    margin: 0;
+    overflow: hidden;
+    background-color: black;
+    color: green;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#matrix {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+.character {
+	font-weight: 600;
+    position: absolute;
+    font-size: 15px;
+    user-select: none;
+}
