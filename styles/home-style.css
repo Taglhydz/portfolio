@@ -17,7 +17,8 @@ body {
 .character {
 	font-weight: 600;
     position: absolute;
-    font-size: 15px;
+    font-size: 16px;
     user-select: none;
     position: absolute;
+    transition: all 0.3s ease;
 }

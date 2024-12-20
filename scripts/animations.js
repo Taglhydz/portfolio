@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const name = 'Tom Vaillant';
     const namePosition = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     const nameCharacters = name.split('');
-    const columnWidth = 15; // Largeur de chaque colonne en pixels
+    const columnWidth = 15;
     const maxColumns = Math.floor(window.innerWidth / columnWidth);
     const displayedColumns = Math.floor(maxColumns * 0.75);
     const centralColumns = 12;
@@ -12,23 +12,14 @@ document.addEventListener('DOMContentLoaded', () => {
     let intervals = [];
     let newCharacterCreation = true;
     let centralCharacters = [];
+    let nameIsAtTop = false;
 
-    const centralColumnIndices = [
-        Math.floor(maxColumns / 2) - 5,
-        Math.floor(maxColumns / 2) - 4,
-        Math.floor(maxColumns / 2) - 3,
-        Math.floor(maxColumns / 2) - 2,
-        Math.floor(maxColumns / 2) - 1,
-        Math.floor(maxColumns / 2),    
-        Math.floor(maxColumns / 2) + 1,
-        Math.floor(maxColumns / 2) + 2,
-        Math.floor(maxColumns / 2) + 3,
-        Math.floor(maxColumns / 2) + 4,
-        Math.floor(maxColumns / 2) + 5,
-        Math.floor(maxColumns / 2) + 6 
-    ];
+    // Ajuster le nombre de colonnes centrales en fonction de la longueur du nom
+    const centralColumnIndices = Array.from(
+        { length: name.length },
+        (_, i) => Math.floor(maxColumns / 2) - Math.floor(name.length / 2) + i
+    );
 
-    // génère un tab de col aléatoires sans les col du milieu
     function getRandomColumns() {
         const allColumns = Array.from({ length: maxColumns }, (_, i) => i);
         const availableColumns = allColumns.filter(col => !centralColumnIndices.includes(col));
@@ -41,8 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         return [...randomColumns, ...centralColumnIndices].sort((a, b) => a - b);
     }
-
-    const columnsToDisplay = getRandomColumns();
 
     function createCharacter(columnIndex) {
         const character = document.createElement('div');
@@ -91,7 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (top >= namePosition.y) {
                 character.style.top = `${namePosition.y}px`;
-                centralCharacters.push(character);
+                centralCharacters[centralIndex] = character;
                 changeCentralCharacter(character, centralIndex);
             } else {
                 requestAnimationFrame(animate);
@@ -108,23 +97,79 @@ document.addEventListener('DOMContentLoaded', () => {
 
         setTimeout(() => {
             clearInterval(changeInterval);
-            character.innerText = nameCharacters[index % nameCharacters.length];
-        }, 3500); // Changer les caractères pendant 4 secondes après l'arrêt de l'animation
+            character.innerText = nameCharacters[index];
+            if (centralCharacters.filter(Boolean).length === nameCharacters.length) {
+                setTimeout(moveNameToTop, 1000);
+            }
+        }, 3500);
+    }
+
+    function centerName() {
+        if (!nameIsAtTop) return;
+
+        // Créer un conteneur temporaire pour mesurer la largeur totale
+        const container = document.createElement('div');
+        container.style.visibility = 'hidden';
+        container.style.position = 'absolute';
+        container.style.whiteSpace = 'nowrap';
+        container.style.fontFamily = "'../ui/fonts/Montserrat-Black.ttf', sans-serif";
+        container.style.fontSize = '15px';
+        container.style.transform = 'scale(1.5)';
+        
+        // Mesurer chaque caractère individuellement
+        const characterWidths = nameCharacters.map(char => {
+            container.textContent = char;
+            document.body.appendChild(container);
+            const width = container.offsetWidth;
+            document.body.removeChild(container);
+            return width;
+        });
+
+        // Calculer la largeur totale avec un espacement uniforme
+        const spacing = 7;
+        const totalWidth = characterWidths.reduce((sum, width) => sum + width, 0) + 
+                          (spacing * (nameCharacters.length - 1));
+        
+        // Position de départ pour centrer le texte
+        const startX = (window.innerWidth - totalWidth) / 2;
+        
+        // Positionner chaque caractère
+        let currentX = startX;
+        centralCharacters.forEach((character, index) => {
+            character.style.transition = 'all 0.5s ease';
+            character.style.left = `${currentX}px`;
+            currentX += characterWidths[index] + spacing;
+        });
     }
 
     function moveNameToTop() {
+        nameIsAtTop = true;
+        centerName();
+        
         centralCharacters.forEach((character, index) => {
-            const leftPosition = (window.innerWidth / 2) - ((nameCharacters.length / 2) * columnWidth) + (index * columnWidth);
-            character.style.transition = 'top 2s';
-            character.style.left = `${leftPosition}px`;
-            character.style.top = '10px';
+            character.style.transition = 'all 0.5s ease';
+            character.style.top = '20px';
+            
+            setTimeout(() => {
+                animatePopCharacter(character, index);
+            }, 500);
         });
+    }
+
+    function animatePopCharacter(character, index) {
+        setTimeout(() => {
+            character.style.transition = 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            character.style.transform = 'scale(1.5)';
+            character.style.fontFamily = "'../ui/fonts/Montserrat-Black.ttf', sans-serif";
+            character.style.color = '#ffffff';
+            character.style.textShadow = '0 0 10px rgba(255,255,255,0.8)';
+            character.style.letterSpacing = 'normal';
+        }, index * 100);
     }
 
     function checkEndAnimation() {
         if (matrix.children.length === 0 && !newCharacterCreation) {
             stopAnimation();
-            moveNameToTop();
         }
     }
 
@@ -133,26 +178,32 @@ document.addEventListener('DOMContentLoaded', () => {
         intervals.forEach(clearInterval);
     }
 
-    // créer des caractères dans chaque col
+    // Gérer le redimensionnement de la fenêtre
+    window.addEventListener('resize', () => {
+        centerName();
+    });
+
+    const columnsToDisplay = getRandomColumns();
     columnsToDisplay.forEach((columnIndex, index) => {
         if (centralColumnIndices.includes(columnIndex)) {
             const centralIndex = centralColumnIndices.indexOf(columnIndex);
             createCentralCharacter(columnIndex, centralIndex);
-            setInterval(() => {
+            const interval = setInterval(() => {
                 if (newCharacterCreation) {
                     createCharacter(columnIndex);
                 }
             }, 85);
+            intervals.push(interval);
         } else {
-            setInterval(() => {
+            const interval = setInterval(() => {
                 if (newCharacterCreation) {
                     createCharacter(columnIndex);
                 }
             }, 85);
+            intervals.push(interval);
         }
     });
 
-    // arrete la creation de nouveaux caractères après 2.5 sec
     setTimeout(() => {
         newCharacterCreation = false;
     }, 2500);
