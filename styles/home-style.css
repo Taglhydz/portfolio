@@ -3,7 +3,7 @@
 body {
     margin: 0;
     overflow: hidden;
-    background-color: black;
+    background-color: rgb(21, 21, 21);
     color: green;
     font-family: 'Anonymous Pro', monospace;
 }

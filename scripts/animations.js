@@ -43,16 +43,22 @@ document.addEventListener('DOMContentLoaded', () => {
         character.style.top = '0';
         matrix.appendChild(character);
 
-        const speed = Math.random() * 5 + 3;
+        const speed = Math.random() * 10 + 3;
         let top = 0;
 
         function animate() {
             top += speed;
             character.style.top = `${top}px`;
 
-            if (top >= window.innerHeight) {
-                matrix.removeChild(character);
-                checkEndAnimation();
+            // Calculer la hauteur réelle du caractère
+            const characterHeight = character.offsetHeight;
+            
+            // Ne supprimer le caractère que lorsqu'il est complètement sorti de la vue
+            if (top >= window.innerHeight + characterHeight) {
+                if (matrix.contains(character)) {
+                    matrix.removeChild(character);
+                    checkEndAnimation();
+                }
             } else {
                 requestAnimationFrame(animate);
             }
@@ -107,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
     function centerName() {
         if (!nameIsAtTop) return;
 
-        // Créer un conteneur temporaire pour mesurer la largeur totale
         const container = document.createElement('div');
         container.style.visibility = 'hidden';
         container.style.position = 'absolute';
@@ -116,7 +121,6 @@ document.addEventListener('DOMContentLoaded', () => {
         container.style.fontSize = '15px';
         container.style.transform = 'scale(1.5)';
         
-        // Mesurer chaque caractère individuellement
         const characterWidths = nameCharacters.map(char => {
             container.textContent = char;
             document.body.appendChild(container);
@@ -125,15 +129,12 @@ document.addEventListener('DOMContentLoaded', () => {
             return width;
         });
 
-        // Calculer la largeur totale avec un espacement uniforme
-        const spacing = 7;
+        const spacing = 8;
         const totalWidth = characterWidths.reduce((sum, width) => sum + width, 0) + 
                           (spacing * (nameCharacters.length - 1));
         
-        // Position de départ pour centrer le texte
         const startX = (window.innerWidth - totalWidth) / 2;
         
-        // Positionner chaque caractère
         let currentX = startX;
         centralCharacters.forEach((character, index) => {
             character.style.transition = 'all 0.5s ease';
@@ -152,7 +153,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             setTimeout(() => {
                 animatePopCharacter(character, index);
-            }, 500);
+            }, 1000);
         });
     }
 
@@ -178,7 +179,6 @@ document.addEventListener('DOMContentLoaded', () => {
         intervals.forEach(clearInterval);
     }
 
-    // Gérer le redimensionnement de la fenêtre
     window.addEventListener('resize', () => {
         centerName();
     });
@@ -192,14 +192,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (newCharacterCreation) {
                     createCharacter(columnIndex);
                 }
-            }, 85);
+            }, 180);
             intervals.push(interval);
         } else {
             const interval = setInterval(() => {
                 if (newCharacterCreation) {
                     createCharacter(columnIndex);
                 }
-            }, 85);
+            }, 180);
             intervals.push(interval);
         }
     });
