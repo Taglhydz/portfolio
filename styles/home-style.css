@@ -5,7 +5,7 @@ body {
     overflow: hidden;
     background-color: black;
     color: green;
-    font-family: 'Courier New', Courier, monospace;
+    font-family: 'Anonymous Pro', monospace;
 }
 
 #matrix {
@@ -19,4 +19,5 @@ body {
     position: absolute;
     font-size: 15px;
     user-select: none;
+    position: absolute;
 }

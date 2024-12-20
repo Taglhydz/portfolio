@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const matrix = document.getElementById('matrix');
     const characters = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポ';
-    const name = '';
+    const name = 'Tom Vaillant';
     const namePosition = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
     const nameCharacters = name.split('');
     const columnWidth = 15; // Largeur de chaque colonne en pixels
@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(animate);
     }
 
-    function createCentralCharacter(columnIndex) {
+    function createCentralCharacter(columnIndex, centralIndex) {
         const character = document.createElement('div');
         character.className = 'character';
         character.innerText = characters.charAt(Math.floor(Math.random() * characters.length));
@@ -92,7 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (top >= namePosition.y) {
                 character.style.top = `${namePosition.y}px`;
                 centralCharacters.push(character);
-                changeCentralCharacter(character);
+                changeCentralCharacter(character, centralIndex);
             } else {
                 requestAnimationFrame(animate);
             }
@@ -101,20 +101,30 @@ document.addEventListener('DOMContentLoaded', () => {
         requestAnimationFrame(animate);
     }
 
-    function changeCentralCharacter(character) {
+    function changeCentralCharacter(character, index) {
         const changeInterval = setInterval(() => {
             character.innerText = characters.charAt(Math.floor(Math.random() * characters.length));
         }, 100);
 
         setTimeout(() => {
             clearInterval(changeInterval);
-            character.innerText = characters.charAt(Math.floor(Math.random() * characters.length));
-        }, 5000); // Changer les caractères pendant 5 secondes après l'arrêt de l'animation
+            character.innerText = nameCharacters[index % nameCharacters.length];
+        }, 3500); // Changer les caractères pendant 4 secondes après l'arrêt de l'animation
+    }
+
+    function moveNameToTop() {
+        centralCharacters.forEach((character, index) => {
+            const leftPosition = (window.innerWidth / 2) - ((nameCharacters.length / 2) * columnWidth) + (index * columnWidth);
+            character.style.transition = 'top 2s';
+            character.style.left = `${leftPosition}px`;
+            character.style.top = '10px';
+        });
     }
 
     function checkEndAnimation() {
         if (matrix.children.length === 0 && !newCharacterCreation) {
             stopAnimation();
+            moveNameToTop();
         }
     }
 
@@ -123,19 +133,11 @@ document.addEventListener('DOMContentLoaded', () => {
         intervals.forEach(clearInterval);
     }
 
-    function createNameCharacter(char, index) {
-        const character = document.createElement('div');
-        character.className = 'character';
-        character.innerText = char;
-        character.style.left = `${namePosition.x - (nameCharacters.length * 10) / 2 + index * 20}px`;
-        character.style.top = `${namePosition.y}px`;
-        matrix.appendChild(character);
-    }
-
     // créer des caractères dans chaque col
-    columnsToDisplay.forEach(columnIndex => {
+    columnsToDisplay.forEach((columnIndex, index) => {
         if (centralColumnIndices.includes(columnIndex)) {
-            createCentralCharacter(columnIndex);
+            const centralIndex = centralColumnIndices.indexOf(columnIndex);
+            createCentralCharacter(columnIndex, centralIndex);
             setInterval(() => {
                 if (newCharacterCreation) {
                     createCharacter(columnIndex);
@@ -148,10 +150,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }, 85);
         }
-    });
-
-    nameCharacters.forEach((char, index) => {
-        createNameCharacter(char, index);
     });
 
     // arrete la creation de nouveaux caractères après 2.5 sec
