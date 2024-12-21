@@ -13,8 +13,42 @@ document.addEventListener('DOMContentLoaded', () => {
     let newCharacterCreation = true;
     let centralCharacters = [];
     let nameIsAtTop = false;
+    
+    const fragment = document.createDocumentFragment();
+    const characterPool = [];
+    const POOL_SIZE = 100;
 
-    // Ajuster le nombre de colonnes centrales en fonction de la longueur du nom
+    for (let i = 0; i < POOL_SIZE; i++) {
+        const char = document.createElement('div');
+        char.className = 'character';
+        characterPool.push({
+            element: char,
+            inUse: false
+        });
+    }
+
+    function getCharacterFromPool() {
+        const available = characterPool.find(char => !char.inUse);
+        if (available) {
+            available.inUse = true;
+            return available.element;
+        }
+        const char = document.createElement('div');
+        char.className = 'character';
+        characterPool.push({ element: char, inUse: true });
+        return char;
+    }
+
+    function returnToPool(element) {
+        const poolChar = characterPool.find(char => char.element === element);
+        if (poolChar) {
+            poolChar.inUse = false;
+            if (element.parentNode) {
+                element.parentNode.removeChild(element);
+            }
+        }
+    }
+
     const centralColumnIndices = Array.from(
         { length: name.length },
         (_, i) => Math.floor(maxColumns / 2) - Math.floor(name.length / 2) + i
@@ -34,31 +68,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function createCharacter(columnIndex) {
-        const character = document.createElement('div');
-        character.className = 'character';
+        const character = getCharacterFromPool();
         character.innerText = characters.charAt(Math.floor(Math.random() * characters.length));
-
-        const leftPosition = columnIndex * columnWidth;
-        character.style.left = `${leftPosition}px`;
-        character.style.top = '0';
+        character.style.transform = `translateX(${columnIndex * columnWidth}px) translateY(0)`;
+        character.style.willChange = 'transform';
+        
         matrix.appendChild(character);
 
         const speed = Math.random() * 10 + 3;
-        let top = 0;
+        let y = 0;
+        let lastTime = performance.now();
 
-        function animate() {
-            top += speed;
-            character.style.top = `${top}px`;
-
-            // Calculer la hauteur réelle du caractère
-            const characterHeight = character.offsetHeight;
+        function animate(currentTime) {
+            if (!matrix.contains(character)) return;
             
-            // Ne supprimer le caractère que lorsqu'il est complètement sorti de la vue
-            if (top >= window.innerHeight + characterHeight) {
-                if (matrix.contains(character)) {
-                    matrix.removeChild(character);
-                    checkEndAnimation();
-                }
+            const deltaTime = Math.min(currentTime - lastTime, 32);
+            lastTime = currentTime;
+            
+            y += speed * (deltaTime / 16.67);
+            character.style.transform = `translateX(${columnIndex * columnWidth}px) translateY(${y}px) translateZ(0)`;
+
+            if (y >= window.innerHeight + 20) {
+                returnToPool(character);
+                checkEndAnimation();
             } else {
                 requestAnimationFrame(animate);
             }
@@ -68,26 +100,37 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function createCentralCharacter(columnIndex, centralIndex) {
-        const character = document.createElement('div');
-        character.className = 'character';
+        const character = getCharacterFromPool();
         character.innerText = characters.charAt(Math.floor(Math.random() * characters.length));
-
-        const leftPosition = columnIndex * columnWidth;
-        character.style.left = `${leftPosition}px`;
-        character.style.top = '0';
+        character.style.transform = `translateX(${columnIndex * columnWidth}px) translateY(0) translateZ(0)`;
+        character.style.willChange = 'transform';
+        
         matrix.appendChild(character);
 
         const speed = Math.random() * 5 + 3;
-        let top = 0;
+        let y = 0;
+        let lastTime = performance.now();
 
-        function animate() {
-            top += speed;
-            character.style.top = `${top}px`;
+        function animate(currentTime) {
+            const deltaTime = Math.min(currentTime - lastTime, 32);
+            lastTime = currentTime;
+            
+            y += speed * (deltaTime / 16.67);
+            character.style.transform = `translateX(${columnIndex * columnWidth}px) translateY(${y}px) translateZ(0)`;
 
-            if (top >= namePosition.y) {
-                character.style.top = `${namePosition.y}px`;
-                centralCharacters[centralIndex] = character;
-                changeCentralCharacter(character, centralIndex);
+            if (y >= namePosition.y && !centralCharacters[centralIndex]) {
+                const clone = getCharacterFromPool();
+                clone.innerText = character.innerText;
+                clone.style.transform = `translateX(${columnIndex * columnWidth}px) translateY(${namePosition.y}px) translateZ(0)`;
+                clone.style.willChange = 'transform';
+                matrix.appendChild(clone);
+                centralCharacters[centralIndex] = clone;
+                changeCentralCharacter(clone, centralIndex);
+            }
+
+            if (y >= window.innerHeight + 20) {
+                returnToPool(character);
+                checkEndAnimation();
             } else {
                 requestAnimationFrame(animate);
             }
@@ -105,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clearInterval(changeInterval);
             character.innerText = nameCharacters[index];
             if (centralCharacters.filter(Boolean).length === nameCharacters.length) {
-                setTimeout(moveNameToTop, 1000);
+                setTimeout(moveNameToTop, 1500);
             }
         }, 4500);
     }
@@ -138,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentX = startX;
         centralCharacters.forEach((character, index) => {
             character.style.transition = 'all 0.5s ease';
-            character.style.left = `${currentX}px`;
+            character.style.transform = `translateX(${currentX}px) translateY(${namePosition.y}px) translateZ(0)`;
             currentX += characterWidths[index] + spacing;
         });
     }
@@ -149,7 +192,9 @@ document.addEventListener('DOMContentLoaded', () => {
         
         centralCharacters.forEach((character, index) => {
             character.style.transition = 'all 0.5s ease';
-            character.style.top = '20px';
+            const currentTransform = character.style.transform;
+            const translateX = currentTransform.match(/translateX\((.*?)\)/)[1];
+            character.style.transform = `translateX(${translateX}) translateY(20px) translateZ(0)`;
             
             setTimeout(() => {
                 animatePopCharacter(character, index);
@@ -160,8 +205,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function animatePopCharacter(character, index) {
         setTimeout(() => {
+            const currentTransform = character.style.transform;
+            const translateX = currentTransform.match(/translateX\((.*?)\)/)[1];
+            const translateY = currentTransform.match(/translateY\((.*?)\)/)[1];
+            
             character.style.transition = 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-            character.style.transform = 'scale(1.5)';
+            character.style.transform = `translateX(${translateX}) translateY(${translateY}) scale(1.5) translateZ(0)`;
             character.style.fontFamily = "'../ui/fonts/Montserrat-Black.ttf', sans-serif";
             character.style.color = '#ffffff';
             character.style.textShadow = '0 0 10px rgba(255,255,255,0.8)';
@@ -180,36 +229,40 @@ document.addEventListener('DOMContentLoaded', () => {
         intervals.forEach(clearInterval);
     }
 
+    function resizeMatrix() {
+        matrix.style.height = '10vh';
+    }
+
     window.addEventListener('resize', () => {
         centerName();
     });
 
     const columnsToDisplay = getRandomColumns();
-    columnsToDisplay.forEach((columnIndex, index) => {
-        if (centralColumnIndices.includes(columnIndex)) {
-            const centralIndex = centralColumnIndices.indexOf(columnIndex);
-            createCentralCharacter(columnIndex, centralIndex);
-            const interval = setInterval(() => {
-                if (newCharacterCreation) {
+    let lastSpawnTime = performance.now();
+    
+    function spawnCharacters(currentTime) {
+        if (!newCharacterCreation) return;
+        
+        if (currentTime - lastSpawnTime >= 250) {
+            columnsToDisplay.forEach((columnIndex) => {
+                if (centralColumnIndices.includes(columnIndex)) {
+                    const centralIndex = centralColumnIndices.indexOf(columnIndex);
+                    if (!centralCharacters[centralIndex]) {
+                        createCentralCharacter(columnIndex, centralIndex);
+                    }
+                } else {
                     createCharacter(columnIndex);
                 }
-            }, 250);
-            intervals.push(interval);
-        } else {
-            const interval = setInterval(() => {
-                if (newCharacterCreation) {
-                    createCharacter(columnIndex);
-                }
-            }, 250);
-            intervals.push(interval);
+            });
+            lastSpawnTime = currentTime;
         }
-    });
+        
+        requestAnimationFrame(spawnCharacters);
+    }
+
+    requestAnimationFrame(spawnCharacters);
 
     setTimeout(() => {
         newCharacterCreation = false;
     }, 2500);
-
-    function resizeMatrix() {
-        matrix.style.height = '10vh';
-    }
 });

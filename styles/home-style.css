@@ -15,10 +15,9 @@ body {
 }
 
 .character {
-	font-weight: 600;
+    font-weight: 600;
     position: absolute;
     font-size: 16px;
     user-select: none;
-    position: absolute;
     transition: all 0.3s ease;
 }
