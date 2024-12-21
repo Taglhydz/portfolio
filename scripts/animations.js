@@ -107,7 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (centralCharacters.filter(Boolean).length === nameCharacters.length) {
                 setTimeout(moveNameToTop, 1000);
             }
-        }, 3500);
+        }, 4500);
     }
 
     function centerName() {
@@ -153,7 +153,8 @@ document.addEventListener('DOMContentLoaded', () => {
             
             setTimeout(() => {
                 animatePopCharacter(character, index);
-            }, 1000);
+                resizeMatrix();
+            }, 900);
         });
     }
 
@@ -192,14 +193,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (newCharacterCreation) {
                     createCharacter(columnIndex);
                 }
-            }, 180);
+            }, 250);
             intervals.push(interval);
         } else {
             const interval = setInterval(() => {
                 if (newCharacterCreation) {
                     createCharacter(columnIndex);
                 }
-            }, 180);
+            }, 250);
             intervals.push(interval);
         }
     });
@@ -207,4 +208,8 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
         newCharacterCreation = false;
     }, 2500);
+
+    function resizeMatrix() {
+        matrix.style.height = '10vh';
+    }
 });
