@@ -8,6 +8,40 @@ body {
     font-family: 'Anonymous Pro', monospace;
 }
 
+
+.mail {
+    display: grid;
+    grid-template-columns: 35vw;
+    grid-template-rows: 1fr 1fr 4fr 1fr;
+    gap: 5px;
+}
+
+.mail > * {
+    border-radius: 8px;
+}
+
+#send {
+    border: 0;
+    padding: 10px 20px;
+    background-color: green;
+    color: black;
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+#send:hover {
+    background-color: rgb(7, 103, 7);
+    color: white;
+    font-weight: 400;
+    text-shadow: 0 0 10px rgba(255,255,255,0.8);
+    scale: 1.1;
+}
+
+/**
+ * -
+ * Rules for the matrix animation
+ * -
+ **/
 #matrix {
     position: relative;
     width: 100%;
