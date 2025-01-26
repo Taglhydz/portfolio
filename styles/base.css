@@ -22,6 +22,7 @@ footer {
 	color: #fff;
 	display: grid;
 	grid-template-rows: 2fr 1fr;
+	grid-template-columns: 1fr;
 	justify-content: center;
 	align-items: center;
 	text-align: center;
@@ -29,5 +30,11 @@ footer {
 
 footer div {
 	display: grid;
-	grid-template-columns: 20px 1fr 20px 1fr 20px 1fr;
+	grid-template-columns: 20vw 10vw 10vw 10vw;
+	gap: 20px;
+}
+
+footer div img {
+	width: 30px;
+	height: 30px;
 }
