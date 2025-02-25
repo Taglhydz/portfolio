@@ -192,6 +192,8 @@ document.addEventListener('DOMContentLoaded', () => {
         
         centralCharacters.forEach((character, index) => {
             character.style.transition = 'all 0.5s ease';
+            character.style.position = 'fixed';
+            character.style.zIndex = '1000';
             const currentTransform = character.style.transform;
             const translateX = currentTransform.match(/translateX\((.*?)\)/)[1];
             character.style.transform = `translateX(${translateX}) translateY(20px) translateZ(0)`;
@@ -199,9 +201,31 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 animatePopCharacter(character, index);
                 resizeMatrix();
+                showContent()
             }, 900);
         });
     }
+
+    function showContent() {
+        setTimeout(() => {
+            
+            const sections = document.querySelectorAll('main section');
+            const footer = document.querySelector('footer');
+            const header = document.querySelector('header');
+            
+            sections.forEach((section, index) => {
+                setTimeout(() => {
+                    section.classList.add('visible');
+                }, index * 200);
+            });
+    
+            setTimeout(() => {
+                footer.classList.add('visible');
+                header.classList.add('visible');
+            }, sections.length * 200);
+        }, 1000);
+    }
+    
 
     function animatePopCharacter(character, index) {
         setTimeout(() => {
@@ -209,7 +233,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const translateX = currentTransform.match(/translateX\((.*?)\)/)[1];
             const translateY = currentTransform.match(/translateY\((.*?)\)/)[1];
             
-            character.style.transition = 'all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+            character.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
             character.style.transform = `translateX(${translateX}) translateY(${translateY}) scale(1.5) translateZ(0)`;
             character.style.fontFamily = "'../ui/fonts/Montserrat-Black.ttf', sans-serif";
             character.style.color = '#ffffff';
@@ -231,6 +255,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function resizeMatrix() {
         matrix.style.height = '10vh';
+        matrix.style.transition = 'opacity 0.5s ease';
     }
 
     window.addEventListener('resize', () => {

@@ -1,0 +1,39 @@
+@import url(./base.css);
+
+main section {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr;
+}
+
+#project1 {
+	background: url(../ui/images/project1);
+}
+
+#project2 {
+	background: url(../ui/images/project2);
+}
+
+#project3 {
+	background: url(../ui/images/project3);
+}
+
+#project4 {
+	background: url(../ui/images/project4);
+}
+
+#project5 {
+	background: url(../ui/images/project5);
+}
+
+#project6 {
+	background: url(../ui/images/project6);
+}
+
+#project7 {
+	background: url(../ui/images/project7);
+}
+
+#project8 {
+	background: url(../ui/images/project8);
+}
