@@ -25,8 +25,8 @@ body::-webkit-scrollbar {
 header {
     position: relative;
     opacity: 0;
-    transform: translateX(-100px);
-    transition: opacity 0.5s ease, transform 0.5s ease;
+    transform: translateX(-200px);
+    transition: opacity 0.3s ease, transform 0.5s ease;
 }
 
 header.visible {
@@ -36,7 +36,7 @@ header.visible {
 
 footer {
     opacity: 0;
-    transition: opacity 0.5s ease;
+    transition: opacity 0.3s ease;
 }
 
 footer.visible {
@@ -49,6 +49,11 @@ header h2 {
     color: var(--text-color);
     font-weight: bold;
     padding-left: 40px;
+}
+
+header a.current-page {
+    pointer-events: none;
+    cursor: default;
 }
 
 main .mail {
@@ -88,6 +93,10 @@ main .aboutMe {
     grid-row: 1;
     position: relative;
     overflow: hidden;
+}
+
+main .aboutMe h3 {
+    font-size: 1.5em;
 }
 
 main .aboutMe .background-images {
@@ -137,27 +146,172 @@ main .contact {
 
 main .contact h3 {
     margin-bottom: 10px;
+    font-size: 1.5em;
 }
 
 main .skillXp {
     grid-column: 1;
     grid-row: 2;
+    padding: 25px;
+    color: white;
 }
-main .skillXp a {
-    text-decoration: none;
+
+main .skillXp p {
+    text-align: justify;
+    font-weight: 300;
+    line-height: 1.6;
+    font-size: 0.8em;
+}
+
+main .skillXp h3 {
+    margin-bottom: 20px;
+}
+
+main .skillXp-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    height: 100%;
+}
+
+main .skillXp .skills,
+main .skillXp .experience {
+    display: flex;
+    flex-direction: column;
+}
+
+main .skillXp h4 {
     color: var(--text-color);
-    font-weight: bold;
+    margin: 0 0 15px 0;
+    font-size: 1.1em;
+    border-bottom: 2px solid var(--text-color);
+    padding-bottom: 8px;
+}
+
+main .skillXp .subsection {
+    margin-bottom: 20px;
+}
+
+main .skillXp h5 {
+    color: var(--text-color);
+    margin: 0 0 10px 0;
+    font-size: 1.05em;
+    font-weight: 700;
+    padding-left: 10px;
+    border-left: 3px solid var(--text-color);
+}
+
+main .skillXp ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+main .skillXp ul li {
+    padding: 8px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+main .skillXp ul li::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--text-color);
+}
+
+main .skillXp .stage-title {
+    margin: 0 0 5px 0;
+}
+
+main .skillXp .stage-date {
+    color: var(--text-color);
+    font-style: italic;
+    margin: 0 0 10px 0;
+    font-size: 0.9em;
 }
 
 main .projects {
     grid-column: 2;
     grid-row: 2;
+    position: relative;
+    overflow: hidden;
+}
+
+main .projects h3 {
+    padding: 25px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    font-size: 1.5em;
 }
 
 main .projects a {
     text-decoration: none;
     color: var(--text-color);
     font-weight: bold;
+    position: relative;
+    z-index: 2;
+}
+
+main .projects .background-images-projects {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+main .projects .background-images-projects::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 2px;
+    height: 100%;
+    background-color: rgba(76, 175, 80, 0.5);
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+main .projects .background-images-projects::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: rgba(76, 175, 80, 0.5);
+    transform: translateY(-50%);
+    z-index: 1;
+}
+
+main .projects .background-images-projects img {
+    position: absolute;
+    height: 50%;
+    width: 50%;
+    object-fit: cover;
+}
+
+main .projects .background-images-projects .bg-left-top {
+    left: 0;
+    top: 0;
+}
+
+main .projects .background-images-projects .bg-right-top {
+    right: 0;
+    top: 0;
+}
+
+main .projects .background-images-projects .bg-left-bottom {
+    left: 0;
+    bottom: 0;
+}
+
+main .projects .background-images-projects .bg-right-bottom {
+    right: 0;
+    bottom: 0;
 }
 
 /* Titres des sections */
@@ -168,8 +322,7 @@ main section h3 {
     font-weight: normal;
 }
 
-/* Effet de hover sur les sections (sauf contact et about me) */
-main .skillXp:hover,
+/* Effet de hover sur les sections cliquables */
 main .projects:hover {
     transform: scale(1.05);
     background-color: rgba(128, 128, 128, 0.3);
@@ -184,7 +337,6 @@ main section {
 }
 
 main section a {
-    margin: 25px;
     width: 100%;
     height: 100%;
 }
@@ -199,6 +351,8 @@ main .mail {
     grid-template-columns: 1fr;
     gap: 15px;
     margin-top: auto;
+    height: 100%;
+    grid-template-rows: auto auto 1fr auto;
 }
 
 main .mail input,
@@ -210,11 +364,18 @@ main .mail textarea {
     border-radius: 8px;
     width: 100%;
     box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+main .mail input::placeholder,
+main .mail textarea::placeholder {
+    font-family: 'Montserrat', sans-serif;
 }
 
 main .mail textarea {
-    min-height: 150px;
     resize: vertical;
+    min-height: 150px;
+    height: 100%;
 }
 
 #send {

@@ -9,6 +9,7 @@
 		<header>
 			<a
 				href="home.html"
+				class="current-page"
 				>
 				<h1>
 					Accueil
@@ -21,36 +22,65 @@
 
 			<section class="aboutMe">
 				<div class="background-images">
-					<img src="./ui/images/graphism-aboutme.jpg" alt="" class="bg-left">
-					<img src="./ui/images/mecanic-aboutme.jpg" alt="" class="bg-right">
+					<img src="./ui/images/graphism-aboutme.jpg" alt="" class="bg-left" >
+					<img src="./ui/images/mecanic-aboutme.jpg"  alt="" class="bg-right">
 				</div>
 				<div class="content">
 					<h3>À propos de moi</h3>
 					<p>Bonjour, je m'appelle Tom Vaillant, je suis en 2<sup>ème</sup> année de formation de développeur concepteur d'application au CESI. Né le 11 Novembre 2004, 20 ans, je possède le permis B. Passionné par l'informatique, en particulier par les aspects visuels et techniques du développement de jeux vidéo, je m'intéresse aussi à la mécanique automobile. </p>
 				</div>
 			</section>
-			
+		
 			<section class="skillXp">
-				<a
-					href="./pages/skillxp.html"
-					>
-					<h3>Compétences/Expériences</h3>
-					<img src="./ui/images/graphism-skillxp.jpg" alt="">
-				</a>
+				<div class="skillXp-content">
+				<div class="skills">
+					<div class="subsection">
+						<h5>💻 Compétences techniques</h5>
+						<ul>
+							<li>Développement web sur Frameworks (Vue, Laravel, React, Express)</li>
+							<li>Programmation orientée objet (Java, Python)</li>
+							<li>Gestion de bases de données (SQL)</li>
+							<li>Développement d'API REST</li>
+						</ul>
+					</div>
+					
+					<div class="subsection">
+						<h5>⭐ Qualités personnelles</h5>
+						<ul>
+							<li>Autonomie et organisation</li>
+							<li>Adaptabilité</li>
+							<li>Persévérance</li>
+							<li>Minutieux</li>
+						</ul>
+					</div>
+				</div>
+					<div class="experience">
+						<h4>Expérience professionnelle</h4>
+						<div class="stage">
+							<p class="stage-title"><strong>Stage - Flers Agglo</strong></p>
+							<p class="stage-date">5 Mai - 30 Juillet</p>
+							<p>Pendant mon stage à Flers Agglo, j’ai participé à plusieurs projets de développement web au sein du service numérique. J’ai d’abord travaillé sur la refonte de l’intranet de la collectivité, où j’ai conçu un module de quiz interactif pour sensibiliser les agents à la cybersécurité. J’ai ensuite développé une application web appelée Ideabox, permettant aux agents de proposer et voter pour des idées d’amélioration interne. Ces missions m’ont permis d’approfondir mes compétences en Vue.js, Express.js, MySQL et en déploiement sur serveur. Ce stage m’a aussi aidé à gagner en autonomie, en rigueur et en expérience dans un environnement professionnel réel.</p>
+						</div>
+					</div>
+				</div>
 			</section>
-
 			<section class="projects">
+				<div class="background-images-projects">
+					<img src="./ui/images/screenproject-jdmpulse.png" 		alt="" class="bg-left-top"    >
+					<img src="./ui/images/screenproject-kudosu.png" 		alt="" class="bg-right-top"   >
+					<img src="./ui/images/screenproject-skyjoterminal.png"  alt="" class="bg-left-bottom" >
+					<img src="./ui/images/screenproject-planetcat.png"  	alt="" class="bg-right-bottom">
+				</div>
 				<a
 					href="./pages/projects.html"
 					>
 					<h3>Projets</h3>
-					<img src="./ui/images/" alt="">
 				</a>
 			</section>
 
 			<section class="contact">
 				<h3>Me contacter</h3>
-				<form action="" class="mail">
+				<form id="contact-form" class="mail">
 					<input type="text"  id="name"    name="name"    placeholder="NOM et Prénom" required>
 					<input type="email" id="email"   name="email"   placeholder="Email" 		required>
 					<textarea 			id="message" name="message" placeholder="Votre message" required></textarea>
@@ -126,8 +156,10 @@
 					</div>
 				</div>
 			</div>
-			<p>Tom Vaillant - Copyright &copy; 2025 All rights reserved</p>
-		</footer>
-		<script src="./scripts/animations.js"></script>
-	</body>
+		<p>Tom Vaillant - Copyright &copy; 2025 All rights reserved</p>
+	</footer>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+	<script src="./scripts/animations.js"></script>
+	<script src="./scripts/email.js"></script>
+</body>
 </html>

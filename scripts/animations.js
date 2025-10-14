@@ -190,20 +190,19 @@ document.addEventListener('DOMContentLoaded', () => {
         if (animationSkipped) return;
         animationSkipped = true;
         
-        matrix.style.transition = 'opacity 1.4s ease';
+        matrix.style.transition = 'opacity 0.3s ease';
         matrix.style.opacity = '0';
         
         setTimeout(() => {
             matrix.style.display = 'none';
             
             window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
+                top: 0
             });
             
             showContent();
             nameIsFixed = true;
-        }, 800);
+        }, 300);
     }
 
     function skipAnimation() {
@@ -247,7 +246,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 footer.classList.add('visible');
                 header.classList.add('visible');
             }, sections.length * 200);
-        }, 1000);
+        }, 100);
     }
 
     function checkEndAnimation() {
