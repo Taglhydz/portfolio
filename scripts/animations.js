@@ -1,4 +1,16 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Vérifier si l'animation a déjà été vue dans cette session
+    const hasSeenAnimation = sessionStorage.getItem('animationSeen');
+    
+    if (hasSeenAnimation === 'true') {
+        // Si on revient depuis une autre page, sauter l'animation
+        skipAnimationAndShowContent();
+        return;
+    }
+    
+    // Marquer l'animation comme vue pour cette session
+    sessionStorage.setItem('animationSeen', 'true');
+    
     const matrix = document.getElementById('matrix');
     const characters = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポ';
     const name = 'Tom Vaillant';
@@ -247,6 +259,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 header.classList.add('visible');
             }, sections.length * 200);
         }, 100);
+    }
+
+    // Fonction pour sauter l'animation et afficher directement le contenu
+    function skipAnimationAndShowContent() {
+        const matrix = document.getElementById('matrix');
+        matrix.style.display = 'none';
+        
+        const sections = document.querySelectorAll('main section');
+        const footer = document.querySelector('footer');
+        const header = document.querySelector('header');
+        
+        // Afficher immédiatement tous les éléments sans animation
+        header.classList.add('visible');
+        
+        sections.forEach(section => {
+            section.classList.add('visible');
+        });
+        
+        footer.classList.add('visible');
     }
 
     function checkEndAnimation() {
