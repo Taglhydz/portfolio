@@ -1,14 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Vérifier si l'animation a déjà été vue dans cette session
+    
     const hasSeenAnimation = sessionStorage.getItem('animationSeen');
     
     if (hasSeenAnimation === 'true') {
-        // Si on revient depuis une autre page, sauter l'animation
         skipAnimationAndShowContent();
         return;
     }
     
-    // Marquer l'animation comme vue pour cette session
     sessionStorage.setItem('animationSeen', 'true');
     
     const matrix = document.getElementById('matrix');
