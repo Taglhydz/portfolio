@@ -78,15 +78,17 @@
 				</a>
 			</section>
 
-			<section class="contact">
-				<h3>Me contacter</h3>
-				<form id="contact-form" class="mail">
-					<input type="text"  id="name"    name="name"    placeholder="NOM et Prénom" required>
-					<input type="email" id="email"   name="email"   placeholder="Email" 		required>
-					<textarea 			id="message" name="message" placeholder="Votre message" required></textarea>
-					<input type="submit" value="Envoyer" id="send">
-				</form>
-			</section>
+		<section class="contact">
+			<h3>Me contacter</h3>
+			<form id="contact-form" class="mail">
+				<input type="text"  id="name"    name="name"    placeholder="NOM et Prénom" required>
+				<input type="email" id="email"   name="email"   placeholder="Email" 		required>
+				<!-- Honeypot field - hidden from users but visible to bots -->
+				<input type="text" id="website" name="website" class="honeypot" tabindex="-1" autocomplete="off">
+				<textarea 			id="message" name="message" placeholder="Votre message" required></textarea>
+				<input type="submit" value="Envoyer" id="send">
+			</form>
+		</section>
 		</main>
 
 		<footer>

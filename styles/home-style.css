@@ -372,6 +372,16 @@ main .mail textarea::placeholder {
     font-family: 'Montserrat', sans-serif;
 }
 
+/* honeypot */
+.honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+}
+
 main .mail textarea {
     resize: vertical;
     min-height: 150px;
