@@ -8,13 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const maxColumns = Math.floor(window.innerWidth / columnWidth);
     const displayedColumns = Math.floor(maxColumns * 0.75);
     const centralColumns = 12;
-    let animationRunning = true;
     let intervals = [];
     let newCharacterCreation = true;
     let centralCharacters = [];
     let nameIsAtTop = false;
+    let nameIsFixed = false;
     
-    const fragment = document.createDocumentFragment();
     const characterPool = [];
     const POOL_SIZE = 100;
 
@@ -148,7 +147,7 @@ document.addEventListener('DOMContentLoaded', () => {
             clearInterval(changeInterval);
             character.innerText = nameCharacters[index];
             if (centralCharacters.filter(Boolean).length === nameCharacters.length) {
-                setTimeout(moveNameToTop, 1500);
+                setTimeout(fadeToContent, 2000);
             }
         }, 4500);
     }
@@ -186,24 +185,21 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    function moveNameToTop() {
-        nameIsAtTop = true;
-        centerName();
+    function fadeToContent() {
+        matrix.style.transition = 'opacity 0.8s ease';
+        matrix.style.opacity = '0';
         
-        centralCharacters.forEach((character, index) => {
-            character.style.transition = 'all 0.5s ease';
-            character.style.position = 'fixed';
-            character.style.zIndex = '1000';
-            const currentTransform = character.style.transform;
-            const translateX = currentTransform.match(/translateX\((.*?)\)/)[1];
-            character.style.transform = `translateX(${translateX}) translateY(20px) translateZ(0)`;
+        setTimeout(() => {
+            matrix.style.display = 'none';
             
-            setTimeout(() => {
-                animatePopCharacter(character, index);
-                resizeMatrix();
-                showContent()
-            }, 900);
-        });
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+            
+            showContent();
+            nameIsFixed = true;
+        }, 400);
     }
 
     function showContent() {
@@ -225,22 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }, sections.length * 200);
         }, 1000);
     }
-    
-
-    function animatePopCharacter(character, index) {
-        setTimeout(() => {
-            const currentTransform = character.style.transform;
-            const translateX = currentTransform.match(/translateX\((.*?)\)/)[1];
-            const translateY = currentTransform.match(/translateY\((.*?)\)/)[1];
-            
-            character.style.transition = 'all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
-            character.style.transform = `translateX(${translateX}) translateY(${translateY}) scale(1.5) translateZ(0)`;
-            character.style.fontFamily = "'../ui/fonts/Montserrat-Black.ttf', sans-serif";
-            character.style.color = '#ffffff';
-            character.style.textShadow = '0 0 10px rgba(255,255,255,0.8)';
-            character.style.letterSpacing = 'normal';
-        }, index * 100);
-    }
 
     function checkEndAnimation() {
         if (matrix.children.length === 0 && !newCharacterCreation) {
@@ -253,13 +233,10 @@ document.addEventListener('DOMContentLoaded', () => {
         intervals.forEach(clearInterval);
     }
 
-    function resizeMatrix() {
-        matrix.style.height = '10vh';
-        matrix.style.transition = 'opacity 0.5s ease';
-    }
-
     window.addEventListener('resize', () => {
-        centerName();
+        if (!nameIsFixed) {
+            centerName();
+        }
     });
 
     const columnsToDisplay = getRandomColumns();
@@ -291,3 +268,6 @@ document.addEventListener('DOMContentLoaded', () => {
         newCharacterCreation = false;
     }, 2500);
 });
+
+// rajouter un "cliquer pour demarrer" avec une animation un peu comme mario kart
+// rajouter un grossissement du nom après le centrage

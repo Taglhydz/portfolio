@@ -146,17 +146,25 @@ footer > div {
 
 /* Effets hover */
 .contacts a:hover,
+.contacts p:hover,
 .localisation a:hover,
 .a_propos a:hover {
     color: #4CAF50;
 }
 
-.contacts > div:hover img,
-.localisation > div:hover img,
-.a_propos > div:hover img {
+.contacts a:hover img,
+.localisation a:hover img,
+.a_propos a:hover img {
     filter: invert(68%) sepia(74%) saturate(402%) hue-rotate(84deg) brightness(92%) contrast(91%);
 }
 
+.contacts p:hover img {
+    filter: invert(1);
+}
+
+.contacts p:hover {
+    color: white;
+}
 /* Copyright */
 footer > p {
     text-align: center;
