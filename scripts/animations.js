@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let centralCharacters = [];
     let nameIsAtTop = false;
     let nameIsFixed = false;
+    let animationSkipped = false;
     
     const characterPool = [];
     const POOL_SIZE = 100;
@@ -186,7 +187,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     function fadeToContent() {
-        matrix.style.transition = 'opacity 0.8s ease';
+        if (animationSkipped) return;
+        animationSkipped = true;
+        
+        matrix.style.transition = 'opacity 1.4s ease';
         matrix.style.opacity = '0';
         
         setTimeout(() => {
@@ -199,8 +203,32 @@ document.addEventListener('DOMContentLoaded', () => {
             
             showContent();
             nameIsFixed = true;
-        }, 400);
+        }, 800);
     }
+
+    function skipAnimation() {
+        if (animationSkipped || nameIsFixed) return;
+        
+        // arrete les caractères
+        newCharacterCreation = false;
+        
+        //clear les intervalles
+        intervals.forEach(clearInterval);
+        
+        while (matrix.firstChild) {
+            matrix.removeChild(matrix.firstChild);
+        }
+        
+        fadeToContent();
+    }
+
+    // ajout des touches pour skip
+    document.addEventListener('click', skipAnimation, { once: true });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ' || e.key === 'Escape') {
+            skipAnimation();
+        }
+    }, { once: true });
 
     function showContent() {
         setTimeout(() => {
