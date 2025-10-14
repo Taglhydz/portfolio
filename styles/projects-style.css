@@ -1,39 +1,225 @@
 @import url(./base.css);
 
-main section {
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-template-rows: 1fr 1fr;
+/* Body background to match page */
+body {
+	background: #1a1a1a;
 }
 
+/* Header styling */
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 2rem 4rem;
+	background: rgba(0, 0, 0, 0.8);
+	border-bottom: 2px solid #00ff41;
+	position: relative;
+	opacity: 0;
+	transform: translateX(-200px);
+	transition: opacity 0.3s ease, transform 0.5s ease;
+}
+
+header.visible {
+	opacity: 1;
+	transform: translateX(0);
+}
+
+header .nav-link {
+	text-decoration: none;
+	color: #fff;
+	transition: color 0.3s ease;
+}
+
+header .nav-link:hover {
+	color: #00ff41;
+}
+
+header .nav-link h2 {
+	margin: 0;
+	font-size: 1.5rem;
+	font-weight: 400;
+}
+
+header .page-title {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	margin: 0;
+	font-size: 3.5rem;
+	color: #00ff41;
+	text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+	font-weight: 700;
+	letter-spacing: 2px;
+}
+
+/* Main content */
+main {
+	min-height: calc(100vh - 200px);
+	padding: 4rem 2rem;
+	background: #1a1a1a;
+}
+
+/* Projects grid */
+.projects-grid {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 2rem;
+	max-width: 1400px;
+	margin: 0 auto;
+}
+
+.project {
+	position: relative;
+	height: 400px;
+	border-radius: 12px;
+	overflow: hidden;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.5s ease;
+	border: 2px solid rgba(0, 255, 65, 0.2);
+	opacity: 0;
+	transform: translateY(50px);
+}
+
+.project.visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.project:hover {
+	transform: translateY(-5px);
+	box-shadow: 0 10px 30px rgba(0, 255, 65, 0.3);
+	border-color: #00ff41;
+}
+
+.project.visible:hover {
+	transform: translateY(-5px);
+}
+
+.project-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: linear-gradient(to bottom, 
+		rgba(0, 0, 0, 0.3) 0%, 
+		rgba(0, 0, 0, 0.7) 60%,
+		rgba(0, 0, 0, 0.95) 100%);
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+	padding: 2rem;
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
+.project:hover .project-overlay {
+	opacity: 1;
+}
+
+.project-overlay h3 {
+	color: #00ff41;
+	font-size: 2rem;
+	margin: 0 0 1rem 0;
+	text-shadow: 0 0 10px rgba(0, 255, 65, 0.5);
+}
+
+.project-overlay p {
+	color: #fff;
+	font-size: 1.1rem;
+	line-height: 1.6;
+	margin: 0 0 1.5rem 0;
+}
+
+.project-link {
+	color: #00ff41;
+	text-decoration: none;
+	font-size: 1.1rem;
+	font-weight: 600;
+	display: inline-block;
+	transition: all 0.3s ease;
+	border-bottom: 2px solid transparent;
+}
+
+.project-link:hover {
+	border-bottom-color: #00ff41;
+	text-shadow: 0 0 10px rgba(0, 255, 65, 0.8);
+}
+
+/* Project backgrounds */
 #project1 {
-	background: url(../ui/images/project1);
+	background: url(../ui/images/screenproject-jdmpulse.png);
+	background-size: cover;
+	background-position: center;
+	background-blend-mode: overlay;
 }
 
 #project2 {
-	background: url(../ui/images/project2);
+	background: url(../ui/images/screenproject-kudosu.png);
+	background-size: cover;
+	background-position: center;
+	background-blend-mode: overlay;
 }
 
 #project3 {
-	background: url(../ui/images/project3);
+	background: url(../ui/images/screenproject-skyjoterminal.png);
+	background-size: cover;
+	background-position: center;
+	background-blend-mode: overlay;
 }
 
 #project4 {
-	background: url(../ui/images/project4);
+	background: url(../ui/images/screenproject-planetcat.png);
+	background-size: cover;
+	background-position: center;
+	background-blend-mode: overlay;
 }
 
-#project5 {
-	background: url(../ui/images/project5);
+/* Footer animation */
+footer {
+	opacity: 0;
+	transition: opacity 0.5s ease;
 }
 
-#project6 {
-	background: url(../ui/images/project6);
+footer.visible {
+	opacity: 1;
 }
 
-#project7 {
-	background: url(../ui/images/project7);
+/* Responsive design */
+@media (max-width: 1200px) {
+	.projects-grid {
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+	
+	header .page-title {
+		font-size: 2.5rem;
+	}
 }
 
-#project8 {
-	background: url(../ui/images/project8);
+@media (max-width: 768px) {
+	header {
+		padding: 1.5rem 2rem;
+		flex-direction: column;
+		gap: 1rem;
+	}
+	
+	header .page-title {
+		position: static;
+		transform: none;
+		font-size: 2rem;
+	}
+	
+	.project {
+		height: 300px;
+	}
+	
+	.project-overlay {
+		opacity: 1;
+		background: linear-gradient(to bottom, 
+			rgba(0, 0, 0, 0.5) 0%, 
+			rgba(0, 0, 0, 0.9) 100%);
+	}
 }

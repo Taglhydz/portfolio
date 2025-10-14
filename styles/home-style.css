@@ -22,7 +22,14 @@ body::-webkit-scrollbar {
     display: none;
 }
 
+/* Header styling */
 header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 4rem;
+    background: rgba(0, 0, 0, 0.8);
+    border-bottom: 2px solid #00ff41;
     position: relative;
     opacity: 0;
     transform: translateX(-200px);
@@ -34,13 +41,32 @@ header.visible {
     transform: translateX(0);
 }
 
-footer {
-    opacity: 0;
-    transition: opacity 0.3s ease;
+header .nav-link {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
 }
 
-footer.visible {
-    opacity: 1;
+header .nav-link:hover {
+    color: #00ff41;
+}
+
+header .nav-link h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 400;
+}
+
+header .page-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin: 0;
+    font-size: 3.5rem;
+    color: #00ff41;
+    text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+    font-weight: 700;
+    letter-spacing: 2px;
 }
 
 header a,
@@ -48,12 +74,20 @@ header h2 {
     text-decoration: none;
     color: var(--text-color);
     font-weight: bold;
-    padding-left: 40px;
 }
 
 header a.current-page {
     pointer-events: none;
     cursor: default;
+}
+
+footer {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+footer.visible {
+    opacity: 1;
 }
 
 main .mail {

@@ -2,61 +2,48 @@
 <html lang="fr">
 	<head>
 		<meta charset="utf-8">
-		<title>Portfolio</title>
-		<link rel="stylesheet" type="text/css" href="./styles/projects-style.css">
+		<title>Projets - Portfolio</title>
+		<link rel="stylesheet" type="text/css" href="../styles/projects-style.css">
 	</head>
 	<body>
 		<header>
-			<a
-				href="../home.html"
-				>
-				<h1>
-					Accueil
-				</h1>
+			<a href="../home.html" class="nav-link">
+				<h2>Accueil</h2>
 			</a>
+			<h1 class="page-title">Projets</h1>
 		</header>
 		<main>
-			<h1>Projets</h1>
-			<section>
-				<div id="project1" class="project">
-					<a
-						href=""
-						>
-						<h3>description</h3>
-						<p>
-							text qui ne sert a rien. text qui ne sert a rien. text qui ne sert a rien. text qui ne sert a rien. text qui ne sert a rien.
-						</p>
-					</a>
+			<section class="projects-grid">
+				<div class="project" id="project1">
+					<div class="project-overlay">
+						<h3>JDM Pulse</h3>
+						<p>Site web dédié aux passionnés de voitures japonaises (JDM). Découvrez les modèles iconiques, leurs spécifications et garder en favoris ceux que vous préférez.</p>
+						<a href="https://github.com/Taglhydz/JDM-Pulse" target="_blank" class="project-link">Voir le projet →</a>
+					</div>
 				</div>
-				<div id="project2" class="project">
-					<a
-						href=""
-						>
-						<h3>description</h3>
-						<p>
-							text qui ne sert a rien. text qui ne sert a rien. text qui ne sert a rien. text qui ne sert a rien. text qui ne sert a rien.
-						</p>
-					</a>
+				
+				<div class="project" id="project2">
+					<div class="project-overlay">
+						<h3>Kudosu</h3>
+						<p>Résolveur de Sudoku développé en Java avec interface terminal. Algorithmes permettant de résoudre les grilles de Sudoku.</p>
+						<a href="https://github.com/Taglhydz/Sudoku-Resolver" target="_blank" class="project-link">Voir le projet →</a>
+					</div>
 				</div>
-				<div id="project3" class="project">
-					<a
-						href=""
-						>
-						<h3>description</h3>
-						<p>
-							text qui ne sert a rien. text qui ne sert a rien. text qui ne sert a rien. text qui ne sert a rien. text qui ne sert a rien.
-						</p>
-					</a>
+				
+				<div class="project" id="project3">
+					<div class="project-overlay">
+						<h3>Skyjo Terminal</h3>
+						<p>Version console du jeu de cartes Skyjo, développée en Python. Jouez de 2 à 8 joueurs sur un terminal.</p>
+						<a href="https://github.com/Taglhydz/Skyjo-on-terminal" target="_blank" class="project-link">Voir le projet →</a>
+					</div>
 				</div>
-				<div id="project4" class="project">
-					<a
-						href=""
-						>
-						<h3>description</h3>
-						<p>
-							text qui ne sert a rien. text qui ne sert a rien. text qui ne sert a rien. text qui ne sert a rien. text qui ne sert a rien.
-						</p>
-					</a>
+				
+				<div class="project" id="project4">
+					<div class="project-overlay">
+						<h3>Planet Cat</h3>
+						<p>Site développé en React dans le cadre de ma formation pour apprendre à coder React</p>
+						<a href="https://github.com/Taglhydz/planet-cat" target="_blank" class="project-link">Voir le projet →</a>
+					</div>
 				</div>
 			</section>
 		</main>
@@ -68,22 +55,22 @@
 				<div class="contacts">
 					<div class="mail">
 						<a 
-							href="mailto:contact@tom-vaillant.ovh"
+							href="mailto:contact@tomvaillant"
 							>
-							<img src="./ui/images/icon-mail.svg" alt="">
-							contact@tom-vaillant.ovh
+							<img src="../ui/images/icon-mail.svg" alt="">
+							contact@tomvaillant
 						</a>
 					</div>
 					<div class="github">
 						<a 
 							href="https://github.com/Taglhydz"
 							target="_blank">
-							<img src="./ui/images/icon-github.svg" alt="">
+							<img src="../ui/images/icon-github.svg" alt="">
 							Github
 						</a>
 					</div>
 					<div class="phone">
-						<img src="./ui/images/icon-phone.svg" alt="">
+						<img src="../ui/images/icon-phone.svg" alt="">
 						<p>Téléphone : 07 83 95 79 41</p>
 					</div>
 					<div class="linkedin">
@@ -91,7 +78,7 @@
 							href="https://www.linkedin.com/in/tom-vaillant-67a587329/"
 							target="_blank"
 							>
-							<img src="./ui/images/icon-linkedin.svg" alt="">
+							<img src="../ui/images/icon-linkedin.svg" alt="">
 							LinkedIn
 						</a>
 					</div>
@@ -102,7 +89,7 @@
 							href="https://www.google.com/maps/place/H%C3%A9rouville-Saint-Clair/@49.2138917,-0.3686845,12.21z/data=!4m6!3m5!1s0x480a67e240c6e181:0x40c14484fbceb50!8m2!3d49.2030936!4d-0.3401301!16zL20vMDJ5bWw2?entry=ttu&g_ep=EgoyMDI1MDEyMi4wIKXMDSoASAFQAw%3D%3D"
 							target="_blank"
 							>
-							<img src="./ui/images/icon-pin.svg" alt="">
+							<img src="../ui/images/icon-pin.svg" alt="">
 							Hérouville-Saint-Clair, Calvados, France
 						</a>
 					</div>
@@ -111,7 +98,7 @@
 							href="https://www.google.com/maps/place/Campus+CESI/@49.2132423,-0.3559433,14.13z/data=!4m6!3m5!1s0x480a5d86d1a4b05b:0x223d94c1fef946dc!8m2!3d49.2132644!4d-0.3554011!16s%2Fg%2F11gxgf9vbl?entry=ttu&g_ep=EgoyMDI1MDEyMi4wIKXMDSoASAFQAw%3D%3D"
 							target="_blank"
 							>
-							<img src="./ui/images/icon-pin.svg" alt="">
+							<img src="../ui/images/icon-pin.svg" alt="">
 							Campus CESI de Caen
 						</a>
 					</div>
@@ -121,7 +108,7 @@
 						<a 
 							href="mentions-legales.html"
 							>
-							<img src="./ui/images/icon-redirect.svg" alt="">
+							<img src="../ui/images/icon-redirect.svg" alt="">
 							Mentions légales
 						</a>
 					</div>
@@ -129,5 +116,6 @@
 			</div>
 			<p>Tom Vaillant - Copyright &copy; 2025 All rights reserved</p>
 		</footer>
+		<script src="../scripts/projects-animations.js"></script>
 	</body>
 </html>
