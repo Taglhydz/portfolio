@@ -13,10 +13,26 @@ body {
     overflow-x: hidden;
 }
 
+/***** HEADER *****/
+header {
+    background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 100%);
+    color: #ffffff;
+    padding: 1rem 2rem;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    width: 100%;
+    box-sizing: border-box;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/***** MAIN *****/
 main {
     flex: 1 0 auto;
     min-height: 70vh;
     position: relative;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /***** FOOTER *****/
