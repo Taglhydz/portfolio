@@ -23,13 +23,15 @@ body::-webkit-scrollbar {
 }
 
 header {
+    position: relative;
     opacity: 0;
-    transition: opacity 0.5 ease;
+    transform: translateX(-100px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 header.visible {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
 }
 
 footer {
@@ -44,7 +46,7 @@ footer.visible {
 header a,
 header h2 {
     text-decoration: none;
-    color: #4CAF50;
+    color: var(--text-color);
     font-weight: bold;
     padding-left: 40px;
 }
@@ -79,9 +81,51 @@ main section {
 }
 
 main .aboutMe {
+    color: white;
     padding: 25px;
+    line-height: 1.8;
     grid-column: 1;
     grid-row: 1;
+    position: relative;
+    overflow: hidden;
+}
+
+main .aboutMe .background-images {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+}
+
+main .aboutMe .background-images img {
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    object-fit: cover;
+    opacity: 0.3;
+}
+
+main .aboutMe .background-images .bg-left {
+    left: 0;
+    top: 0;
+}
+
+main .aboutMe .background-images .bg-right {
+    right: 0;
+    top: 0;
+}
+
+main .aboutMe .content {
+    position: relative;
+    z-index: 1;
+}
+
+main .aboutMe .content h3,
+main .aboutMe .content p {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 main .contact {
@@ -101,7 +145,7 @@ main .skillXp {
 }
 main .skillXp a {
     text-decoration: none;
-    color: #4CAF50;
+    color: var(--text-color);
     font-weight: bold;
 }
 
@@ -112,13 +156,13 @@ main .projects {
 
 main .projects a {
     text-decoration: none;
-    color: #4CAF50;
+    color: var(--text-color);
     font-weight: bold;
 }
 
 /* Titres des sections */
 main section h3 {
-    color: #4CAF50;
+    color: var(--text-color);
     margin: 0;
     font-size: 1.2em;
     font-weight: normal;
@@ -174,7 +218,7 @@ main .mail textarea {
 }
 
 #send {
-    background-color: #4CAF50;
+    background-color: var(--text-color);
     color: white;
     border: none;
     padding: 15px;
