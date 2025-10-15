@@ -101,6 +101,8 @@ main {
 	display: inline-block;
 	transition: all 0.3s ease;
 	border-bottom: 2px solid transparent;
+	width: fit-content;
+	padding: 5px;
 }
 
 .project-link:hover {
