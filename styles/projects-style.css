@@ -1,17 +1,5 @@
 @import url(./base.css);
 
-/* Header - Animation spécifique page projets */
-header {
-	opacity: 0;
-	transform: translateX(-200px);
-	transition: opacity 0.3s ease, transform 0.5s ease;
-}
-
-header.visible {
-	opacity: 1;
-	transform: translateX(0);
-}
-
 /* Main content */
 main {
 	min-height: calc(100vh - 200px);
@@ -137,16 +125,6 @@ main {
 	background-size: cover;
 	background-position: center;
 	background-blend-mode: overlay;
-}
-
-/* Footer animation */
-footer {
-	opacity: 0;
-	transition: opacity 0.5s ease;
-}
-
-footer.visible {
-	opacity: 1;
 }
 
 /* Media queries */

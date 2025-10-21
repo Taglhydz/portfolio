@@ -20,8 +20,8 @@
 					<p>
 						<strong>Nom :</strong> Tom Vaillant<br>
 						<strong>Adresse :</strong> Hérouville-Saint-Clair, Calvados, France<br>
-						<strong>Email :</strong> <a href="mailto:tom.vaillant.vt@gmail.com">contact@tomvaillant</a><br>
-						<strong>Téléphone :</strong> 07 83 95 79 41
+						<strong>Email :</strong> <a class="mail-link"><span class="mail-text"></span></a><br>
+						<strong>Téléphone :</strong> <a class="phone-link"><span class="phone-text"></span></a>
 					</p>
 				</article>
 
@@ -53,7 +53,7 @@
 						Les données collectées via le formulaire de contact sont uniquement destinées à répondre à vos demandes et ne sont en aucun cas transmises à des tiers.
 					</p>
 					<p>
-						Pour exercer vos droits, vous pouvez nous contacter à l'adresse : <a href="mailto:tom.vaillant.vt@gmail.com">contact@tomvaillant</a>
+						Pour exercer vos droits, vous pouvez nous contacter à l'adresse : <a class="mail-link"><span class="mail-text"></span></a>
 					</p>
 				</article>
 
@@ -105,14 +105,14 @@
 						Pour toute question concernant ces mentions légales ou le site en général, vous pouvez me contacter :
 					</p>
 					<ul>
-						<li>Par email : <a href="mailto:tom.vaillant.vt@gmail.com">contact@tomvaillant</a></li>
-						<li>Par téléphone : 07 83 95 79 41</li>
+						<li>Par email : <a class="mail-link"><span class="mail-text"></span></a></li>
+						<li>Par téléphone : <a class="phone-link"><span class="phone-text"></span></a></li>
 						<li>Via le <a href="../home.html#contact">formulaire de contact</a></li>
 					</ul>
 				</article>
 
 				<p class="last-update">
-					<em>Dernière mise à jour : 14 octobre 2025</em>
+					<em>Dernière mise à jour : 21 octobre 2025</em>
 				</p>
 			</section>
 		</main>
@@ -123,11 +123,9 @@
 				</div>
 				<div class="contacts">
 					<div class="mail">
-						<a 
-							href="mailto:tom.vaillant.vt@gmail.com"
-							>
+						<a class="mail-link">
 							<img src="../ui/images/icon-mail.svg" alt="">
-							contact@tomvaillant
+							<span class="mail-text"></span>
 						</a>
 					</div>
 					<div class="github">
@@ -139,8 +137,10 @@
 						</a>
 					</div>
 					<div class="phone">
-						<img src="../ui/images/icon-phone.svg" alt="">
-						<p>Téléphone : 07 83 95 79 41</p>
+						<a class="phone-link">
+							<img src="../ui/images/icon-phone.svg" alt="">
+							<span class="phone-text"></span>
+						</a>
 					</div>
 					<div class="linkedin">
 						<a 
@@ -183,5 +183,6 @@
 			</div>
 			<p>Tom Vaillant - Copyright &copy; 2025 All rights reserved</p>
 		</footer>
+		<script src="../scripts/antibot.js"></script>
 	</body>
 </html>
