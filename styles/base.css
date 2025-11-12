@@ -200,10 +200,6 @@ footer > div {
     transition: color 0.3s ease;
 }
 
-.localisation .mentions-item {
-    margin-top: 0.5rem;
-}
-
 /* Effets hover */
 .contacts a:hover,
 .contacts p:hover,
