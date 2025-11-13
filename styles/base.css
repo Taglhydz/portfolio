@@ -62,6 +62,8 @@ header .page-title {
     text-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
     font-weight: 700;
     letter-spacing: 2px;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 
 header a.current-page {

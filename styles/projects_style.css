@@ -100,28 +100,28 @@ main {
 
 /* Project backgrounds */
 #project1 {
-	background: url(../ui/images/screenproject-jdmpulse.png);
+	background: url(../ui/images/screenproject_jdmpulse.png);
 	background-size: cover;
 	background-position: center;
 	background-blend-mode: overlay;
 }
 
 #project2 {
-	background: url(../ui/images/screenproject-kudosu2.png);
+	background: url(../ui/images/screenproject_kudosu2.png);
 	background-size: cover;
 	background-position: center;
 	background-blend-mode: overlay;
 }
 
 #project3 {
-	background: url(../ui/images/screenproject-skyjoterminal.png);
+	background: url(../ui/images/screenproject_skyjoterminal.png);
 	background-size: cover;
 	background-position: center;
 	background-blend-mode: overlay;
 }
 
 #project4 {
-	background: url(../ui/images/screenproject-planetcat.png);
+	background: url(../ui/images/screenproject_planetcat.png);
 	background-size: cover;
 	background-position: center;
 	background-blend-mode: overlay;

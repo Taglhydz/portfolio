@@ -1,1 +1,7 @@
-@import url('../projects_style.css');
+@import url('./project_details_base.css');
+
+/* Project-specific hero background */
+.project-hero {
+	background: linear-gradient(135deg, rgba(0, 255, 65, 0.1) 0%, rgba(0, 0, 0, 0.9) 100%),
+				url(../../ui/images/screenproject_jdmpulse.png);
+}
