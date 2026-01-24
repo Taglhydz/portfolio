@@ -39,7 +39,7 @@
     document.getElementById('contact-form').addEventListener('submit', function (event) {
         event.preventDefault();
 
-        // verif honeypot, si rempli > bot
+        // verif honeypot, si rempli : bot
         const honeypot = document.getElementById('website').value;
         if (honeypot) {
             console.log('Bot détecté - soumission bloquée');
@@ -50,8 +50,16 @@
         // Afficher toast "envoi en cours"
         const loadingToast = showToast('Envoi en cours...', 'loading');
 
-        // si honeypot vide > humain > envoi email
-        emailjs.sendForm('service_iqs4i5t', 'template_vcdkvbj', this)
+        // Préparer les paramètres du template
+        const templateParams = {
+            name: this.name.value,
+            email: this.email.value,
+            message: this.message.value,
+            reply_to: this.email.value
+        };
+
+        // si honeypot vide : humain -> envoi email
+        emailjs.send('service_iqs4i5t', 'template_vcdkvbj', templateParams)
             .then(() => {
                 // Supprimer le toast loading
                 if (loadingToast.parentNode) {
