@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<meta name="description" content="Kudosu – Résolveur de Sudoku développé en Java avec interface en ligne de commande. Projet de Tom Vaillant.">
+		<meta name="description" content="Kudosu – Résolveur de Sudoku développé en Java, avec démo interactive (interface et terminal). Projet de Tom Vaillant.">
 		<title>Kudosu - Portfolio</title>
 		<link rel="icon" type="image/svg+xml" href="../../ui/images/favicon.svg">
 		<link rel="stylesheet" type="text/css" href="../../styles/projects/kudosu_style.css">
@@ -26,6 +26,10 @@
 							<img src="../../ui/images/icon_github.svg" alt="">
 							Voir sur GitHub
 						</a>
+						<a href="#demo" class="btn-primary">
+							<span aria-hidden="true">▶</span>
+							Tester la démo
+						</a>
 					</div>
 				</div>
 			</section>
@@ -37,8 +41,43 @@
 							<img src="../../ui/images/screenproject_kudosu2.png" alt="Screenshot Kudosu">
 						</div>
 						<div class="about-text">
-							<p>Kudosu est un résolveur de Sudoku développé en Java avec une interface en ligne de commande. Ce projet implémente des algorithmes de résolution sophistiqués capables de résoudre des grilles de Sudoku de différents niveaux de difficulté.</p>
+							<p>Kudosu est un résolveur de Sudoku développé en Java, utilisable en ligne de commande ou via une interface graphique JavaFX avec thèmes clair et sombre. Ce projet implémente des algorithmes de résolution sophistiqués capables de résoudre des grilles de Sudoku de différents niveaux de difficulté.</p>
 							<p>L'application utilise des techniques de backtracking et d'optimisation pour trouver les solutions de manière efficace, tout en offrant une interface utilisateur claire et intuitive dans le terminal.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="project-section demo-section" id="demo">
+				<div class="section-content">
+					<h3>Démo</h3>
+					<p class="demo-intro">Le solveur ci-dessous est le code Java du projet, compilé en JavaScript avec TeaVM&nbsp;: il tourne entièrement dans votre navigateur.</p>
+					<div class="demo-tabs" role="tablist">
+						<button type="button" role="tab" id="tab-terminal" class="demo-tab active" aria-selected="true" aria-controls="demo-terminal">Terminal</button>
+						<button type="button" role="tab" id="tab-gui" class="demo-tab" aria-selected="false" aria-controls="demo-gui">Interface</button>
+					</div>
+
+					<div class="demo-panel" id="demo-gui" role="tabpanel" aria-labelledby="tab-gui" hidden>
+						<div class="sudoku-grid" id="sudoku-grid"></div>
+						<div class="demo-controls">
+							<button type="button" class="demo-btn" id="btn-example">Exemple</button>
+							<button type="button" class="demo-btn primary" id="btn-solve">Résoudre</button>
+							<button type="button" class="demo-btn" id="btn-clear">Effacer</button>
+						</div>
+						<p class="demo-status" id="demo-status" aria-live="polite"></p>
+					</div>
+
+					<div class="demo-panel" id="demo-terminal" role="tabpanel" aria-labelledby="tab-terminal">
+						<div class="terminal">
+							<div class="terminal-bar">
+								<span class="terminal-dots" aria-hidden="true"><span></span><span></span><span></span></span>
+								<span class="terminal-title">Kudosu — terminal</span>
+								<button type="button" class="terminal-example" id="btn-term-example">Coller un exemple</button>
+							</div>
+							<div class="terminal-body" id="terminal-body">
+								<pre id="terminal-output"></pre>
+								<input type="text" id="terminal-input" class="terminal-input" inputmode="numeric" autocomplete="off" spellcheck="false" aria-label="Grille de sudoku à résoudre">
+							</div>
 						</div>
 					</div>
 				</div>
@@ -104,7 +143,7 @@
 							<span class="feature-icon">📝</span>
 							<div>
 								<h4>Saisie interactive</h4>
-								<p>Entrez vos grilles facilement via l'interface en ligne de commande</p>
+								<p>Entrez vos grilles dans le terminal ou directement dans la grille de l'interface graphique</p>
 							</div>
 						</div>
 						<div class="feature-item">
@@ -122,5 +161,6 @@
 		<script src="../../scripts/footer.js" defer></script>
 		<script src="../../scripts/antibot.js" defer></script>
 		<script src="../../scripts/projects_animations.js" defer></script>
+		<script type="module" src="../../scripts/kudosu/kudosu_demo.js"></script>
 	</body>
 </html>
