@@ -93,9 +93,53 @@ main {
 	padding: 5px;
 }
 
-.project-link:hover {
+a.project {
+	display: block;
+	text-decoration: none;
+	color: inherit;
+}
+
+a.project:hover .project-link,
+.split-half:hover .project-link {
 	border-bottom-color: #00ff41;
 	text-shadow: 0 0 10px rgba(0, 255, 65, 0.8);
+}
+
+/* Carte séparée en deux (site en ligne / détails) */
+.project-split .project-overlay {
+	padding-bottom: 5rem;
+}
+
+.split-half {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 50%;
+	display: flex;
+	align-items: flex-end;
+	padding: 2rem;
+	box-sizing: border-box;
+	text-decoration: none;
+	opacity: 0;
+	transition: opacity 0.3s ease, background 0.3s ease;
+}
+
+.split-left {
+	left: 0;
+	border-right: 1px solid rgba(0, 255, 65, 0.4);
+}
+
+.split-right {
+	right: 0;
+	justify-content: flex-end;
+}
+
+.project-split:hover .split-half {
+	opacity: 1;
+}
+
+.split-half:hover {
+	background: rgba(0, 255, 65, 0.1);
 }
 
 /* Project backgrounds */
@@ -149,5 +193,14 @@ main {
 		background: linear-gradient(to bottom, 
 			rgba(0, 0, 0, 0.5) 0%, 
 			rgba(0, 0, 0, 0.9) 100%);
+	}
+
+	.split-half {
+		opacity: 1;
+		padding: 1.5rem 1rem;
+	}
+
+	.project-split .project-overlay p {
+		display: none;
 	}
 }
