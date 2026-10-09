@@ -43,13 +43,19 @@
                 <div>
                     <a href="https://www.google.com/maps/place/H%C3%A9rouville-Saint-Clair/@49.2138917,-0.3686845,12.21z/data=!4m6!3m5!1s0x480a67e240c6e181:0x40c14484fbceb50!8m2!3d49.2030936!4d-0.3401301!16zL20vMDJ5bWw2?entry=ttu&g_ep=EgoyMDI1MDEyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
                         <img src="${b}ui/images/icon_pin.svg" alt="">
-                        Hérouville-Saint-Clair, Calvados, France
+                        Montpellier, Hérault, France
                     </a>
                 </div>
                 <div>
                     <a href="https://www.google.com/maps/place/Campus+CESI/@49.2132423,-0.3559433,14.13z/data=!4m6!3m5!1s0x480a5d86d1a4b05b:0x223d94c1fef946dc!8m2!3d49.2132644!4d-0.3554011!16s%2Fg%2F11gxgf9vbl?entry=ttu&g_ep=EgoyMDI1MDEyMi4wIKXMDSoASAFQAw%3D%3D" target="_blank" rel="noopener noreferrer">
                         <img src="${b}ui/images/icon_pin.svg" alt="">
-                        Campus CESI de Caen
+                        MyDigitalSchool Montpellier
+                    </a>
+                </div>
+                <div>
+                    <a href="${b}pages/cv.html">
+                        <img src="${b}ui/images/icon_redirect.svg" alt="">
+                        Voir mon CV
                     </a>
                 </div>
                 <div>

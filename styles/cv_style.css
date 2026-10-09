@@ -1,0 +1,100 @@
+@import url(./base.css);
+
+/* Main */
+main {
+	min-height: calc(100vh - 200px);
+	padding: 4rem 2rem;
+	background: #1a1a1a;
+}
+
+.cv-section {
+	max-width: 1000px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: 2rem;
+}
+
+/* Boutons */
+.cv-actions {
+	display: flex;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 1rem;
+}
+
+.btn-primary,
+.btn-secondary {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.6rem;
+	padding: 0.8rem 1.6rem;
+	border-radius: 8px;
+	border: 2px solid #00ff41;
+	font-weight: 600;
+	text-decoration: none;
+	transition: all 0.3s ease;
+}
+
+.btn-primary {
+	background: #00ff41;
+	color: #1a1a1a;
+}
+
+.btn-secondary {
+	background: transparent;
+	color: #00ff41;
+}
+
+.btn-primary img,
+.btn-secondary img {
+	width: 20px;
+	height: 20px;
+}
+
+.btn-secondary img {
+	filter: invert(68%) sepia(74%) saturate(402%) hue-rotate(84deg) brightness(92%) contrast(91%);
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+	box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+	transform: translateY(-2px);
+}
+
+/* Aperçu PDF */
+.cv-viewer {
+	width: 100%;
+	max-width: 850px;
+	margin: 0 auto;
+	box-sizing: border-box;
+	border: 2px solid rgba(0, 255, 65, 0.2);
+	border-radius: 12px;
+	overflow: hidden;
+	background: rgba(0, 0, 0, 0.5);
+}
+
+.cv-viewer object {
+	display: block;
+	width: 100%;
+	/* Format A4 pour afficher la page en entier */
+	aspect-ratio: 210 / 297;
+	height: auto;
+}
+
+.cv-fallback {
+	color: #fff;
+	text-align: center;
+	padding: 3rem 1rem;
+}
+
+.cv-fallback a {
+	color: #00ff41;
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+	main {
+		padding: 2rem 1rem;
+	}
+}
