@@ -1,4 +1,5 @@
 @import url('./projects/project_details_base.css');
+@import url('./tag_logos.css');
 
 .project-hero {
 	background: radial-gradient(circle at 15% 30%, rgba(0, 255, 65, 0.15) 0%, transparent 45%),
@@ -122,11 +123,11 @@
 }
 
 .tags li {
-	padding: 0.35rem 0.8rem;
+	padding: 0.45rem 1rem;
 	border: 1px solid rgba(0, 255, 65, 0.4);
 	border-radius: 999px;
 	color: #e6e6e6;
-	font-size: 0.9rem;
+	font-size: 0.95rem;
 	background: rgba(0, 0, 0, 0.3);
 }
 
