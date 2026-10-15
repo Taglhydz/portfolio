@@ -151,14 +151,10 @@ a.project:hover .project-link,
 }
 
 #project-flers {
-	background: radial-gradient(circle at 20% 20%, rgba(0, 255, 65, 0.25) 0%, transparent 50%),
-				linear-gradient(135deg, #0f1f12 0%, #000 100%);
-}
-
-/* Carte sans capture : le texte reste visible sans survol */
-.project-no-image .project-overlay {
-	opacity: 1;
-	background: none;
+	background: url(../ui/images/screenproject_flers_quiz.png);
+	background-size: cover;
+	background-position: center;
+	background-blend-mode: overlay;
 }
 
 #project-kudosu {
