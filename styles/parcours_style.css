@@ -1,0 +1,222 @@
+@import url('./projects/project_details_base.css');
+
+.project-hero {
+	background: radial-gradient(circle at 15% 30%, rgba(0, 255, 65, 0.15) 0%, transparent 45%),
+				radial-gradient(circle at 85% 70%, rgba(0, 255, 65, 0.1) 0%, transparent 45%),
+				linear-gradient(135deg, #0f1f12 0%, #000 100%);
+}
+
+.hero-content .hero-subtitle {
+	color: #fff;
+	font-size: 1.2rem;
+	margin: -1rem 0 2rem;
+}
+
+.project-section .section-intro {
+	max-width: 900px;
+	margin: -1rem auto 2.5rem;
+	text-align: center;
+}
+
+/***** EXPÉRIENCES (frise) *****/
+.timeline {
+	position: relative;
+	max-width: 1000px;
+	margin: 0 auto;
+	padding-left: 2.5rem;
+}
+
+.timeline::before {
+	content: '';
+	position: absolute;
+	top: 0.5rem;
+	bottom: 0.5rem;
+	left: 0.6rem;
+	width: 2px;
+	background: rgba(0, 255, 65, 0.3);
+}
+
+.timeline-item {
+	position: relative;
+	margin-bottom: 2.5rem;
+	padding: 1.5rem 2rem;
+	background: rgba(0, 255, 65, 0.05);
+	border: 2px solid rgba(0, 255, 65, 0.2);
+	border-radius: 12px;
+	transition: all 0.3s ease;
+}
+
+.timeline-item:last-child {
+	margin-bottom: 0;
+}
+
+.timeline-item::before {
+	content: '';
+	position: absolute;
+	top: 1.9rem;
+	left: calc(-2.5rem + 0.6rem - 7px);
+	width: 12px;
+	height: 12px;
+	border: 2px solid #00ff41;
+	border-radius: 50%;
+	background: #1a1a1a;
+	box-shadow: 0 0 10px rgba(0, 255, 65, 0.6);
+}
+
+.timeline-item:hover {
+	border-color: #00ff41;
+	box-shadow: 0 10px 30px rgba(0, 255, 65, 0.2);
+}
+
+.timeline-head {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 0.5rem 1.5rem;
+	margin-bottom: 1rem;
+}
+
+.timeline-head h4 {
+	color: #00ff41;
+	font-size: 1.4rem;
+	margin: 0;
+}
+
+.project-section .timeline-meta {
+	color: #aaa;
+	font-size: 1rem;
+	margin: 0;
+	text-align: left;
+}
+
+.project-section .timeline-item p {
+	font-size: 1.05rem;
+	line-height: 1.7;
+	margin-bottom: 1rem;
+}
+
+.timeline-link {
+	display: inline-block;
+	margin-top: 0.5rem;
+	color: #00ff41;
+	font-weight: 600;
+	text-decoration: none;
+	border-bottom: 2px solid transparent;
+	transition: all 0.3s ease;
+}
+
+.timeline-link:hover {
+	border-bottom-color: #00ff41;
+	text-shadow: 0 0 10px rgba(0, 255, 65, 0.8);
+}
+
+/***** ÉTIQUETTES *****/
+.tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.tags li {
+	padding: 0.35rem 0.8rem;
+	border: 1px solid rgba(0, 255, 65, 0.4);
+	border-radius: 999px;
+	color: #e6e6e6;
+	font-size: 0.9rem;
+	background: rgba(0, 0, 0, 0.3);
+}
+
+/***** FORMATION *****/
+.education-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 1.2rem;
+}
+
+.education-item.current {
+	border-color: #00ff41;
+	box-shadow: 0 0 20px rgba(0, 255, 65, 0.25);
+}
+
+.project-section .education-item .education-years {
+	color: #aaa;
+	font-size: 0.95rem;
+	margin-top: 0.5rem;
+}
+
+/***** COMPÉTENCES TECHNIQUES *****/
+.skill-groups {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1.5rem;
+}
+
+.skill-group {
+	background: rgba(0, 255, 65, 0.05);
+	border: 2px solid rgba(0, 255, 65, 0.2);
+	border-radius: 12px;
+	padding: 1.5rem;
+	transition: all 0.3s ease;
+}
+
+.skill-group:hover {
+	border-color: #00ff41;
+	transform: translateY(-5px);
+}
+
+.skill-group h4 {
+	color: #00ff41;
+	font-size: 1.2rem;
+	margin: 0 0 1rem;
+}
+
+/* Compétences et qualités : on précise où elles ont été acquises */
+.feature-item .feature-origin {
+	display: block;
+	margin-top: 0.8rem;
+	color: #00ff41;
+	font-size: 0.85rem;
+	font-weight: 600;
+	letter-spacing: 0.5px;
+}
+
+/* Cartes par rangées de 3, dernière rangée centrée (évite une carte seule) */
+.features-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.feature-item {
+	flex: 0 1 380px;
+	max-width: 400px;
+	box-sizing: border-box;
+}
+
+@media (max-width: 1100px) {
+	.skill-groups {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 768px) {
+	.skill-groups {
+		grid-template-columns: 1fr;
+	}
+
+	.timeline {
+		padding-left: 1.8rem;
+	}
+
+	.timeline-item {
+		padding: 1.2rem;
+	}
+
+	.timeline-item::before {
+		left: calc(-1.8rem + 0.6rem - 7px);
+	}
+}
