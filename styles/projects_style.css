@@ -143,28 +143,35 @@ a.project:hover .project-link,
 }
 
 /* Project backgrounds */
-#project1 {
+#project-jdm {
 	background: url(../ui/images/screenproject_jdmpulse.png);
 	background-size: cover;
 	background-position: center;
 	background-blend-mode: overlay;
 }
 
-#project2 {
+#project-flers {
+	background: url(../ui/images/screenproject_flers_quiz.png);
+	background-size: cover;
+	background-position: center;
+	background-blend-mode: overlay;
+}
+
+#project-kudosu {
 	background: url(../ui/images/screenproject_kudosu2.png);
 	background-size: cover;
 	background-position: center;
 	background-blend-mode: overlay;
 }
 
-#project3 {
+#project-skyjo {
 	background: url(../ui/images/screenproject_skyjoterminal.png);
 	background-size: cover;
 	background-position: center;
 	background-blend-mode: overlay;
 }
 
-#project4 {
+#project-planetcat {
 	background: url(../ui/images/screenproject_planetcat.png);
 	background-size: cover;
 	background-position: center;

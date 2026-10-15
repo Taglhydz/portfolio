@@ -318,6 +318,29 @@ main {
 	text-align: left;
 }
 
+/* Mise en avant d'une section atteinte via un bouton (#ancre) */
+.section-highlight h3 {
+	animation: heading-glow 1.4s ease-out;
+}
+
+@keyframes heading-glow {
+	0% {
+		text-shadow: 0 0 10px rgba(0, 255, 65, 0.4);
+	}
+	25% {
+		text-shadow: 0 0 30px rgba(0, 255, 65, 1), 0 0 60px rgba(0, 255, 65, 0.6);
+	}
+	100% {
+		text-shadow: 0 0 10px rgba(0, 255, 65, 0.4);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.section-highlight h3 {
+		animation: none;
+	}
+}
+
 /* Media Queries */
 @media (max-width: 768px) {
 	.hero-content h2 {

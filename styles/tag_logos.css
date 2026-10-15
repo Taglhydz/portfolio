@@ -1,0 +1,97 @@
+/* Logo en fond des étiquettes de compétences (Vue.js, Laravel...) :
+   le logo, transparent, centré derrière le texte, sans changer la taille de l'étiquette */
+.tag-logo {
+	position: relative;
+	isolation: isolate;
+}
+
+.tag-logo::before {
+	content: '';
+	position: absolute;
+	z-index: -1;
+	top: 50%;
+	left: 50%;
+	width: 4.5em;
+	height: 2.8em;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	opacity: 0.3;
+	transform: translate(-50%, -50%) rotate(-12deg);
+	pointer-events: none;
+}
+
+.logo-vue::before { background-image: url(../ui/images/icon_vue.png); }
+.logo-react::before { background-image: url(../ui/images/icon_react.png); }
+.logo-flutter::before { background-image: url(../ui/images/icon_flutter.png); }
+.logo-bootstrap::before { background-image: url(../ui/images/icon_bootstrap.png); }
+.logo-laravel::before { background-image: url(../ui/images/icon_laravel.png); }
+.logo-codeigniter::before { background-image: url(../ui/images/icon_codeigniter.png); }
+.logo-nodejs::before { background-image: url(../ui/images/icon_nodejs.png); }
+.logo-php::before { background-image: url(../ui/images/icon_php.png); }
+.logo-java::before { background-image: url(../ui/images/icon_java.png); }
+.logo-python::before { background-image: url(../ui/images/icon_python.svg); }
+.logo-mysql::before { background-image: url(../ui/images/icon_mysql.png); }
+.logo-gitlab::before { background-image: url(../ui/images/icon_gitlab.png); }
+.logo-xampp::before { background-image: url(../ui/images/icon_xampp.png); }
+.logo-winscp::before { background-image: url(../ui/images/icon_winscp.png); }
+.logo-trello::before { background-image: url(../ui/images/icon_trello.png); }
+.logo-figma::before { background-image: url(../ui/images/icon_figma.png); }
+.logo-phpmyadmin::before { background-image: url(../ui/images/icon_phpmyadmin.png); }
+.logo-apache::before { background-image: url(../ui/images/icon_apache.svg); }
+.logo-nginx::before { background-image: url(../ui/images/icon_nginx.svg); }
+.logo-docker::before { background-image: url(../ui/images/icon_docker.png); }
+.logo-javascript::before { background-image: url(../ui/images/icon_javascript.png); }
+.logo-typescript::before { background-image: url(../ui/images/icon_typescript.svg); }
+.logo-planner::before { background-image: url(../ui/images/icon_microsoft_planner.svg); }
+.logo-postgresql::before { background-image: url(../ui/images/icon_postgresql.svg); }
+.logo-dart::before { background-image: url(../ui/images/icon_dart.svg); }
+.logo-c::before { background-image: url(../ui/images/icon_c.png); }
+.logo-csharp::before { background-image: url(../ui/images/icon_csharp.png); }
+.logo-springboot::before { background-image: url(../ui/images/icon_springboot.png); }
+.logo-tailwind::before { background-image: url(../ui/images/icon_tailwind.png); }
+.logo-powershell::before { background-image: url(../ui/images/icon_powershell.png); }
+.logo-ldap::before { background-image: url(../ui/images/icon_ldap.svg); }
+
+/* Étiquette « Apache / Nginx » : les deux logos côte à côte */
+.logo-apache-nginx::before {
+	width: 5.5em;
+	background-image: url(../ui/images/icon_apache.svg), url(../ui/images/icon_nginx.svg);
+	background-position: left center, right center;
+	background-size: auto 115%, auto 80%;
+}
+
+/* Étiquette « HTML / CSS » : les deux logos côte à côte */
+.logo-html-css::before {
+	width: 5.5em;
+	background-image: url(../ui/images/icon_html5.svg), url(../ui/images/icon_css3.png);
+	background-position: left center, right center;
+	background-size: auto 90%, auto 90%;
+}
+
+/* Étiquette « PuTTY / WinSCP » : les deux logos côte à côte */
+.logo-putty-winscp::before {
+	width: 6.5em;
+	background-image: url(../ui/images/icon_putty.png), url(../ui/images/icon_winscp.png);
+	background-position: left center, right center;
+	background-size: auto 85%, auto 85%;
+}
+
+/* Étiquette « Nginx / PM2 » : les deux logos côte à côte */
+.logo-nginx-pm2::before {
+	width: 5.5em;
+	background-image: url(../ui/images/icon_nginx.svg), url(../ui/images/icon_pm2.svg);
+	background-position: left center, right center;
+	background-size: auto 80%, auto 90%;
+}
+
+/* Logos agrandis à la demande */
+.logo-laravel::before {
+	transform: translate(-50%, -50%) rotate(-12deg) scale(1.7);
+}
+
+/* Java : +20 % puis +30 % */
+.logo-java::before {
+	transform: translate(-50%, -50%) rotate(-12deg) scale(1.56);
+}
+
