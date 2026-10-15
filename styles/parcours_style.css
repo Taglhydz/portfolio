@@ -151,8 +151,22 @@
 /***** COMPÉTENCES TECHNIQUES *****/
 .skill-groups {
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(2, 1fr);
 	gap: 1.5rem;
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+.project-section .skill-intro {
+	max-width: 1100px;
+	margin: 0 auto 1.2rem;
+	color: #ccc;
+	font-size: 1.05rem;
+	text-align: left;
+}
+
+.skill-groups + .skill-intro {
+	margin-top: 3rem;
 }
 
 .skill-group {
@@ -195,12 +209,6 @@
 	flex: 0 1 380px;
 	max-width: 400px;
 	box-sizing: border-box;
-}
-
-@media (max-width: 1100px) {
-	.skill-groups {
-		grid-template-columns: repeat(2, 1fr);
-	}
 }
 
 @media (max-width: 768px) {
