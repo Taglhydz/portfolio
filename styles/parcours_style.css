@@ -20,11 +20,15 @@
 }
 
 /***** EXPÉRIENCES (frise) *****/
+/* --tl-pad : espace à gauche des cartes (colonne des dates + ligne)
+   --tl-line : position de la ligne depuis le bord gauche de la frise */
 .timeline {
+	--tl-pad: 9rem;
+	--tl-line: 7.6rem;
 	position: relative;
-	max-width: 1000px;
+	max-width: 1100px;
 	margin: 0 auto;
-	padding-left: 2.5rem;
+	padding-left: var(--tl-pad);
 }
 
 .timeline::before {
@@ -32,7 +36,7 @@
 	position: absolute;
 	top: 0.5rem;
 	bottom: 0.5rem;
-	left: 0.6rem;
+	left: var(--tl-line);
 	width: 2px;
 	background: rgba(0, 255, 65, 0.3);
 }
@@ -51,17 +55,47 @@
 	margin-bottom: 0;
 }
 
+/* Rond centré sur la ligne : on vise le centre de la ligne (--tl-line + 1px depuis la frise),
+   en partant de l'intérieur de la carte (décalé de --tl-pad et de sa bordure de 2px),
+   puis translateX(-50%) recentre le rond quelle que soit sa taille */
 .timeline-item::before {
 	content: '';
 	position: absolute;
 	top: 1.9rem;
-	left: calc(-2.5rem + 0.6rem - 7px);
+	left: calc(var(--tl-line) - var(--tl-pad) - 1px);
 	width: 12px;
 	height: 12px;
 	border: 2px solid #00ff41;
 	border-radius: 50%;
 	background: #1a1a1a;
 	box-shadow: 0 0 10px rgba(0, 255, 65, 0.6);
+	transform: translateX(-50%);
+}
+
+/* Date à gauche de la ligne, à hauteur du rond */
+.timeline-date {
+	position: absolute;
+	top: 1.45rem;
+	left: calc(-1 * var(--tl-pad) - 2px);
+	width: calc(var(--tl-line) - 1.2rem);
+	text-align: right;
+	line-height: 1.2;
+}
+
+.timeline-year {
+	display: block;
+	color: #00ff41;
+	font-size: 1.4rem;
+	font-weight: 700;
+	text-shadow: 0 0 10px rgba(0, 255, 65, 0.4);
+}
+
+.timeline-months {
+	display: block;
+	margin-top: 0.3rem;
+	color: #aaa;
+	font-size: 0.8rem;
+	white-space: nowrap;
 }
 
 .timeline-item:hover {
@@ -275,14 +309,19 @@
 	}
 
 	.timeline {
-		padding-left: 1.8rem;
+		--tl-pad: 5.2rem;
+		--tl-line: 4.2rem;
 	}
 
 	.timeline-item {
 		padding: 1.2rem;
 	}
 
-	.timeline-item::before {
-		left: calc(-1.8rem + 0.6rem - 7px);
+	.timeline-year {
+		font-size: 1.1rem;
+	}
+
+	.timeline-months {
+		font-size: 0.7rem;
 	}
 }
