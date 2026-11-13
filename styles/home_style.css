@@ -291,6 +291,29 @@ main .projects .background-images-projects img {
     object-fit: cover;
 }
 
+/* GardenFlow : trois captures de téléphone côte à côte dans un quart */
+main .projects .background-images-projects .bg-phones {
+    position: absolute;
+    width: 50%;
+    height: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6%;
+    background: linear-gradient(135deg, #0d1f10 0%, #000 100%);
+}
+
+main .projects .background-images-projects .bg-phones img {
+    position: static;
+    width: auto;
+    height: 82%;
+    aspect-ratio: 1080 / 2340;
+    object-fit: cover;
+    border: 3px solid #000;
+    border-radius: 10px;
+    box-shadow: 0 0 0 1px #333;
+}
+
 main .projects .background-images-projects .bg-left-top {
     left: 0;
     top: 0;
