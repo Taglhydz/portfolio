@@ -1,0 +1,270 @@
+@import url('./project_details_base.css');
+
+/* Project-specific hero background */
+.project-hero {
+	background: linear-gradient(135deg, rgba(0, 20, 5, 0.75) 0%, rgba(0, 0, 0, 0.88) 100%),
+				url(../../ui/images/screenproject_gardenflow_title.jpg),
+				linear-gradient(135deg, #0d1f10 0%, #000 100%);
+	background-size: cover;
+	background-position: center;
+}
+
+.hero-content .hero-subtitle {
+	color: #fff;
+	font-size: 1.2rem;
+	margin: -1rem 0 2rem;
+}
+
+.hero-content .hero-badge {
+	display: inline-block;
+	margin: 1.5rem 0 0;
+	padding: 0.4rem 1rem;
+	border: 1px dashed rgba(0, 255, 65, 0.5);
+	border-radius: 999px;
+	color: #aaa;
+	font-size: 0.95rem;
+}
+
+/* Texte à gauche, capture du téléphone à droite */
+.about-screenshot-grid {
+	grid-template-columns: 3fr 2fr;
+	align-items: center;
+}
+
+/* Captures d'écran dans un cadre de téléphone : bordure noire épaisse et coins très arrondis */
+.phone-shot,
+.about-screenshot-grid .phone-shot {
+	max-width: 280px;
+	margin: 0 auto;
+	padding: 10px;
+	box-sizing: border-box;
+	background: #000;
+	border: 2px solid #333;
+	border-radius: 42px;
+	box-shadow: 0 0 0 2px rgba(0, 255, 65, 0.3), 0 10px 40px rgba(0, 255, 65, 0.2);
+}
+
+.phone-shot img,
+.about-screenshot-grid .phone-shot img {
+	border-radius: 32px;
+}
+
+.project-section .screenshot-caption {
+	color: #aaa;
+	font-size: 0.95rem;
+	text-align: center;
+	margin-top: 1rem;
+}
+
+/* Capture des suggestions à côté de l'exemple de score */
+.suggestions-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 3rem;
+	align-items: center;
+	max-width: 1000px;
+	margin: 0 auto 3rem;
+}
+
+/* Galerie de 2 captures sous les fonctionnalités */
+.phone-gallery {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 2rem;
+	max-width: 750px;
+	margin: 3rem auto 0;
+}
+
+.score-card {
+	background: #0c0c0c;
+	border: 2px solid rgba(0, 255, 65, 0.3);
+	border-radius: 12px;
+	box-shadow: 0 10px 40px rgba(0, 255, 65, 0.2);
+	padding: 1.5rem 1.8rem;
+}
+
+.project-section .score-card-title {
+	color: #00ff41;
+	font-size: 1.15rem;
+	font-weight: 600;
+	margin: 0 0 1rem;
+	text-align: left;
+}
+
+.score-lines {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.score-lines li,
+.project-section .score-total {
+	display: flex;
+	justify-content: space-between;
+	gap: 1rem;
+	color: #fff;
+	font-size: 1rem;
+	line-height: 1.6;
+	padding: 0.4rem 0;
+	border-bottom: 1px solid rgba(0, 255, 65, 0.1);
+}
+
+.score-lines span:last-child {
+	font-family: Consolas, 'Cascadia Mono', 'Courier New', monospace;
+	font-weight: 600;
+}
+
+.score-neutral {
+	color: #aaa;
+}
+
+.score-up {
+	color: #00ff41;
+}
+
+.project-section .score-total {
+	margin: 0.4rem 0 0;
+	border-bottom: none;
+	font-size: 1.2rem;
+	font-weight: 700;
+	color: #00ff41;
+}
+
+.project-section .score-card-note {
+	color: #aaa;
+	font-size: 0.9rem;
+	line-height: 1.5;
+	margin: 0.8rem 0 0;
+	text-align: left;
+}
+
+/* Stack technique : 2 x 2, logos centrés */
+.tech-grid {
+	grid-template-columns: repeat(2, 1fr);
+}
+
+.tech-item {
+	justify-content: space-between;
+	padding: 1.5rem 0.5rem;
+}
+
+.tech-item p {
+	text-align: center;
+	letter-spacing: 0.5px;
+	white-space: nowrap;
+}
+
+.tech-icon {
+	width: 100%;
+	height: 80px;
+}
+
+.project-section .mission-intro {
+	max-width: 1000px;
+	margin: -1rem auto 2.5rem;
+	text-align: center;
+}
+
+/* Règles du moteur de suggestions */
+.rules-list {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 1rem 2rem;
+	max-width: 1100px;
+	margin: 0 auto;
+}
+
+.rule {
+	padding: 1rem 1.5rem;
+	border-left: 3px solid #00ff41;
+	background: rgba(0, 255, 65, 0.04);
+	border-radius: 0 12px 12px 0;
+}
+
+.project-section .rule h4 {
+	color: #00ff41;
+	font-size: 1.2rem;
+	margin: 0 0 0.5rem;
+}
+
+.project-section .rule p {
+	font-size: 1rem;
+	line-height: 1.6;
+	margin: 0;
+	text-align: left;
+}
+
+.project-section .rules-note {
+	max-width: 1000px;
+	margin: 2rem auto 0;
+	color: #aaa;
+	font-size: 1rem;
+	text-align: center;
+}
+
+.project-section .sub-title {
+	color: #00ff41;
+	font-size: 1.4rem;
+	margin: 0 0 0.5rem;
+}
+
+.production {
+	max-width: 1000px;
+	margin: 3rem auto 0;
+}
+
+.project-section .production p {
+	font-size: 1.1rem;
+}
+
+.production-steps {
+	color: #fff;
+	font-size: 1.05rem;
+	line-height: 1.8;
+	margin: 0;
+	padding-left: 1.5rem;
+}
+
+.production-steps li::marker {
+	color: #00ff41;
+}
+
+.project-section code {
+	background: #0c0c0c;
+	border: 1px solid rgba(0, 255, 65, 0.3);
+	border-radius: 4px;
+	padding: 0.1rem 0.4rem;
+	color: #e6e6e6;
+	font-family: Consolas, 'Cascadia Mono', 'Courier New', monospace;
+	font-size: 0.9em;
+}
+
+/* Cartes par rangées de 3, dernière rangée centrée (évite une carte seule) */
+.features-list {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.feature-item {
+	flex: 0 1 380px;
+	max-width: 400px;
+	box-sizing: border-box;
+}
+
+@media (max-width: 768px) {
+	.about-screenshot-grid,
+	.suggestions-grid,
+	.phone-gallery,
+	.rules-list {
+		grid-template-columns: 1fr;
+	}
+
+	.tech-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+
+	.score-card {
+		padding: 1.2rem;
+	}
+}
