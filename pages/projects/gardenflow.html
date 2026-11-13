@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="description" content="GardenFlow : application mobile Flutter pour planifier son potager, avec une API Express.js et MySQL qui suggère quoi planter, où et quand. Projet de Tom Vaillant.">
+		<title>GardenFlow - Portfolio</title>
+		<link rel="icon" type="image/svg+xml" href="../../ui/images/favicon.svg">
+		<link rel="stylesheet" type="text/css" href="../../styles/projects/gardenflow_style.css">
+	</head>
+	<body>
+		<header>
+			<a href="../../index.html" class="nav-link">
+				<h2>Accueil</h2>
+			</a>
+			<a href="../projects.html" class="nav-link">
+				<h1 class="page-title">Projets</h1>
+			</a>
+		</header>
+		<main>
+			<section class="project-hero">
+				<div class="hero-content">
+					<h2>GardenFlow</h2>
+					<p class="hero-subtitle">L'application mobile pour planifier son potager</p>
+					<div class="project-links">
+						<a href="https://github.com/Taglhydz/GardenFlow/tree/dev" target="_blank" rel="noopener noreferrer" class="btn-primary">
+							<img src="../../ui/images/icon_github.svg" alt="">
+							Voir sur GitHub
+						</a>
+						<a href="https://gardenflow.fr" target="_blank" rel="noopener noreferrer" class="btn-primary">
+							<img src="../../ui/images/icon_redirect.svg" alt="">
+							gardenflow.fr
+						</a>
+					</div>
+					<p class="hero-badge">Bientôt disponible sur le Play Store</p>
+				</div>
+			</section>
+
+			<section class="project-section about-screenshot-section">
+				<div class="section-content">
+					<div class="about-screenshot-grid">
+						<div class="about-text">
+							<p>GardenFlow aide les jardiniers à organiser leur potager. On dessine son jardin, ses parcelles et ses zones, on choisit ce qu'on veut cultiver, et l'application conseille quoi planter, où et à quel moment de l'année.</p>
+							<p>Les conseils tiennent compte de la saison, du type de sol, de l'ensoleillement, des associations entre plantes (certaines s'entraident, d'autres se gênent) et de la rotation des cultures d'une année sur l'autre.</p>
+							<p>C'est un projet personnel que je mène de A à Z : l'application mobile en Flutter, l'API en Express.js, la base MySQL et l'hébergement avec Docker. Elle sortira bientôt sur le Play Store, dès que le serveur sera en ligne.</p>
+						</div>
+						<div>
+							<div class="screenshot-container phone-shot">
+								<img src="../../ui/images/screenproject_gardenflow_plan.jpg" alt="Plan d'un jardin dans GardenFlow, avec ses parcelles et ses zones">
+							</div>
+							<p class="screenshot-caption">Le plan du jardin, avec ses parcelles et ses zones.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="project-section tech-info-section">
+				<div class="section-content">
+					<h3>Technologies & Informations</h3>
+					<div class="tech-info-container">
+						<div class="tech-column">
+							<h4>Stack technique</h4>
+							<div class="tech-grid">
+								<div class="tech-item">
+									<p>Mobile</p>
+									<img class="tech-icon" src="../../ui/images/icon_flutter.png" alt="Flutter">
+								</div>
+								<div class="tech-item">
+									<p>Backend</p>
+									<img class="tech-icon" src="../../ui/images/icon_nodejs.png" alt="Node.js et Express.js">
+								</div>
+								<div class="tech-item">
+									<p>Base de données</p>
+									<img class="tech-icon" src="../../ui/images/icon_mysql.png" alt="MySQL">
+								</div>
+								<div class="tech-item">
+									<p>Déploiement</p>
+									<img class="tech-icon" src="../../ui/images/icon_docker.png" alt="Docker">
+								</div>
+							</div>
+						</div>
+						<div class="info-column">
+							<h4>Détails du projet</h4>
+							<div class="info-grid">
+								<div class="info-item">
+									<h4>Début du projet</h4>
+									<p>Octobre 2025</p>
+								</div>
+								<div class="info-item">
+									<h4>Statut</h4>
+									<p>En cours, bientôt sur le Play Store</p>
+								</div>
+								<div class="info-item">
+									<h4>Type</h4>
+									<p>Projet personnel</p>
+								</div>
+								<div class="info-item">
+									<h4>Plateforme</h4>
+									<p>Android</p>
+								</div>
+								<div class="info-item">
+									<h4>Langues</h4>
+									<p>Français et anglais</p>
+								</div>
+								<div class="info-item">
+									<h4>Licence</h4>
+									<p>MIT (open source)</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="project-section features-section">
+				<div class="section-content">
+					<h3>Fonctionnalités principales</h3>
+					<div class="features-list">
+						<div class="feature-item">
+							<div>
+								<h4>Plan du jardin</h4>
+								<p>Parcelles et zones en formes libres, dessinées en mètres. Une zone suit sa parcelle quand on la déplace, et les surfaces sont calculées automatiquement.</p>
+							</div>
+						</div>
+						<div class="feature-item">
+							<div>
+								<h4>Catalogue de plantes</h4>
+								<p>Chaque plante a sa famille et son calendrier : semis sous abri, semis en pleine terre, plantation et récolte, avec plusieurs périodes possibles par an.</p>
+							</div>
+						</div>
+						<div class="feature-item">
+							<div>
+								<h4>Suggestions de plantation</h4>
+								<p>Pour une zone et un mois donnés, l'application classe les plantes qu'on peut y mettre, en expliquant chaque point gagné ou perdu.</p>
+							</div>
+						</div>
+						<div class="feature-item">
+							<div>
+								<h4>Associations et rotation</h4>
+								<p>Les bons et mauvais voisinages entre plantes, et un rappel quand la même famille a déjà poussé au même endroit les années précédentes.</p>
+							</div>
+						</div>
+						<div class="feature-item">
+							<div>
+								<h4>Comptes utilisateurs</h4>
+								<p>Inscription, connexion avec Google, mot de passe oublié par e-mail, et suppression du compte depuis l'application ou le site.</p>
+							</div>
+						</div>
+						<div class="feature-item">
+							<div>
+								<h4>Bilingue</h4>
+								<p>Interface en français et en anglais. Ajouter une langue revient à ajouter un fichier de traduction, sans toucher à la base de données.</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="phone-gallery">
+						<div>
+							<div class="screenshot-container phone-shot">
+								<img src="../../ui/images/screenproject_gardenflow_jardins.jpg" alt="Liste des jardins de l'utilisateur dans GardenFlow">
+							</div>
+							<p class="screenshot-caption">La liste de ses jardins.</p>
+						</div>
+						<div>
+							<div class="screenshot-container phone-shot">
+								<img src="../../ui/images/screenproject_gardenflow_parcelle.jpg" alt="Détail d'une parcelle et de ses cultures dans GardenFlow">
+							</div>
+							<p class="screenshot-caption">Une parcelle et ses cultures.</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<section class="project-section features-section">
+				<div class="section-content">
+					<h3>Le moteur de suggestions</h3>
+					<p class="mission-intro">Rien n'est stocké : les suggestions sont recalculées à chaque demande. Chaque plante part de 50 points, puis des règles ajoutent ou retirent des points.</p>
+					<div class="suggestions-grid">
+						<div>
+							<div class="screenshot-container phone-shot">
+								<img src="../../ui/images/screenproject_gardenflow_suggestions.jpg" alt="Liste des plantes suggérées pour une zone dans GardenFlow">
+							</div>
+							<p class="screenshot-caption">Les suggestions pour une zone, classées par score.</p>
+						</div>
+						<div class="score-card" aria-label="Exemple de calcul d'une suggestion">
+							<p class="score-card-title">Exemple : une tomate en mai</p>
+							<ul class="score-lines">
+								<li><span>Score de départ</span><span class="score-neutral">50</span></li>
+								<li><span>Peut être plantée ce mois-ci</span><span class="score-up">+15</span></li>
+								<li><span>Sol préféré de la plante</span><span class="score-up">+10</span></li>
+								<li><span>Basilic dans la même zone</span><span class="score-up">+12</span></li>
+							</ul>
+							<p class="score-total"><span>Score</span><span>87</span></p>
+							<p class="score-card-note">Chaque bonus ou malus est accompagné de sa raison, traduite dans l'application.</p>
+						</div>
+					</div>
+					<div class="rules-list">
+						<div class="rule">
+							<h4>Saison</h4>
+							<p>+15 si la plante peut aller en terre ce mois-ci. Une plante qu'on ne peut que semer sous abri reste listée, sans bonus.</p>
+						</div>
+						<div class="rule">
+							<h4>Sol</h4>
+							<p>+10 si la parcelle a le sol préféré de la plante, -5 sinon. Un sol standard convient à tout.</p>
+						</div>
+						<div class="rule">
+							<h4>Soleil et humidité</h4>
+							<p>Un bonus quand l'exposition et l'humidité correspondent, un malus quand il manque du soleil ou que c'est trop sec ou trop humide.</p>
+						</div>
+						<div class="rule">
+							<h4>Associations</h4>
+							<p>Un bon ou un mauvais voisin compte plus il est proche : +12 / -20 dans la zone, +8 / -14 dans la parcelle, +6 / -10 dans une parcelle à moins de 50 cm.</p>
+						</div>
+						<div class="rule">
+							<h4>Rotation des cultures</h4>
+							<p>-25, -15 ou -8 si une plante de la même famille a été récoltée au même endroit il y a moins de 1, 2 ou 3 ans.</p>
+						</div>
+						<div class="rule">
+							<h4>Place disponible</h4>
+							<p>Le nombre de pieds qui tiennent dans la zone selon l'espacement de la plante, et -30 si même un seul ne rentre pas.</p>
+						</div>
+					</div>
+					<p class="rules-note">Les poids des règles sont regroupés à un seul endroit et couverts par des tests unitaires, pour pouvoir les ajuster sans rien casser.</p>
+				</div>
+			</section>
+
+			<section class="project-section features-section">
+				<div class="section-content">
+					<h3>Une API pensée pour la production</h3>
+					<div class="features-list">
+						<div class="feature-item">
+							<div>
+								<h4>Sécurité des données</h4>
+								<p>Authentification par JWT : l'utilisateur est toujours lu dans le jeton, jamais dans la requête, et le jardin d'un autre répond 404.</p>
+							</div>
+						</div>
+						<div class="feature-item">
+							<div>
+								<h4>Validation</h4>
+								<p>Chaque requête est validée avec zod. Une zone doit rester dans sa parcelle, sans chevaucher une autre zone ni avoir de côtés qui se croisent.</p>
+							</div>
+						</div>
+						<div class="feature-item">
+							<div>
+								<h4>Erreurs traduites</h4>
+								<p>Les erreurs renvoient un code stable (par exemple <code>ZONES_OVERLAP</code>) que l'application traduit dans la langue de l'utilisateur.</p>
+							</div>
+						</div>
+						<div class="feature-item">
+							<div>
+								<h4>Migrations</h4>
+								<p>La base évolue par fichiers SQL numérotés, appliqués une seule fois et dans l'ordre. Une migration modifiée après coup est détectée grâce à une somme de contrôle.</p>
+							</div>
+						</div>
+						<div class="feature-item">
+							<div>
+								<h4>Tests et CI</h4>
+								<p>Tests d'intégration sur une base dédiée, tests Flutter, le tout relancé par GitHub Actions à chaque push sur <code>dev</code> et <code>main</code>.</p>
+							</div>
+						</div>
+						<div class="feature-item">
+							<div>
+								<h4>Rôles</h4>
+								<p>Un rôle administrateur pour gérer le catalogue de plantes et les associations, attribué seulement en ligne de commande.</p>
+							</div>
+						</div>
+					</div>
+
+					<div class="production">
+						<h4 class="sub-title">Mise en production</h4>
+						<p>Le serveur tourne avec Docker Compose : l'API, MySQL, le HTTPS et les sauvegardes. Il pourra être hébergé sur un petit PC à la maison derrière un tunnel Cloudflare, ou sur un VPS.</p>
+						<ul class="production-steps">
+							<li>l'API refuse de démarrer en production tant qu'il reste des migrations à appliquer ;</li>
+							<li>l'application est compilée en <code>.aab</code> et signée avec la clé d'envoi du Play Store, conservée hors du dépôt ;</li>
+							<li>l'adresse de l'API de production est injectée au moment de la compilation, sans modifier le code ;</li>
+							<li>le site <code>gardenflow.fr</code> héberge la politique de confidentialité et la page de suppression de compte exigées par le Play Store.</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+		</main>
+		<footer></footer>
+		<script src="../../scripts/footer.js" defer></script>
+		<script src="../../scripts/antibot.js" defer></script>
+		<script src="../../scripts/projects_animations.js" defer></script>
+	</body>
+</html>
